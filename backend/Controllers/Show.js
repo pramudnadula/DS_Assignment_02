@@ -58,3 +58,18 @@ exports.getoneshow = (req, res) => {
     })
 
 }
+
+exports.updateshow = (req, res) => {
+    let showid = req.params.id;
+    const { seatbook } = req.body;
+    const updateshow = {
+        seatbook
+    }
+
+    const update = Show.findByIdAndUpdate(showid, updateshow).then(() => {
+        res.status(200).send({ status: "show updated" })
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).send({ status: "error in updating data", error: err.message });
+    })
+}
