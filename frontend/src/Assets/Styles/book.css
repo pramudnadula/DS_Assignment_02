@@ -2,21 +2,24 @@
     background-color: #242333;
     color: white;
     height: 100vh;
+    width: 100vw;
 
 }
 
 .seat {
     background-color: #444451;
-    width: 25px;
-    height: 22px;
+    width: 40px;
+    height: 37px;
     margin: 3px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    text-align: center;
+    color: black;
 }
 
-.rows {
-    display: flex;
-}
+.rows {}
+
+
 
 .seat.selected {
     background-color: #6feaf6;
@@ -41,7 +44,7 @@
 }
 
 .showcase {
-    background-color: rgba(0, 0, 0, 0.1);
+    /* background-color: rgba(0, 0, 0, 0.1); */
     padding: 5px;
     border-radius: 5px;
     color: grey;
@@ -70,4 +73,17 @@
 
 .con {
     perspective: 1000px;
+}
+
+.new_line {
+    white-space: pre-line;
+}
+
+@media (max-width: 576px) {
+    .seat {
+
+        width: 30px;
+        height: 27px;
+
+    }
 }
