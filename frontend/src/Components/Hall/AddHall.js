@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { message } from 'antd'
+//import { message } from 'antd'
 
 function AddHall(props) {
     const [name, setname] = useState("")

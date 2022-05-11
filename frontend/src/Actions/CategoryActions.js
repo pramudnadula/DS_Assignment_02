@@ -1,5 +1,5 @@
 import axios from "axios";
-import { message } from 'antd'
+//import { message } from 'antd'
 
 export const getcategories = () => async dispatch => {
     dispatch({ type: 'LOADING', payload: true })

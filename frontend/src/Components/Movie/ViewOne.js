@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { getShows } from '../../Actions/ShowActions';
 import '../../Assets/Styles/one.css'
+import NavBar_Home from '../../Components/Home/NavBar_Home';
+
 function ViewOne(props) {
     const [movie, setmovie] = useState({});
     const [area, setarea] = useState([]);
@@ -22,6 +24,25 @@ function ViewOne(props) {
         }).catch((err) => {
             console.log(err)
         })
+
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = document.querySelectorAll('.navbar-burger')
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach(el => {
+            el.addEventListener('click', () => {
+
+                // Get the target from the "data-target" attribute
+                const target = el.dataset.target;
+                const $target = document.getElementById(target);
+
+                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+
+            });
+        });
+        
     }, [])
 
     useEffect(() => {
@@ -39,13 +60,15 @@ function ViewOne(props) {
         }
     }
     return (
+        <>
+        <NavBar_Home />
         <div className='container-fluid '>
-            <div className="mc row">
-                <div className=" co3 col-12">
+            <div className="mc-movie row">
+                <div className=" co3-movie col-12">
                     <div className='row'>
                         <div className='col-12'>
-                            <a href="#"><img src={"http://localhost:8070/" + movie?.image} alt="cover" className="cover img-fluid d-block" /></a>
-                            <div className="hero">
+                            <a href="#"><img src={"http://localhost:8070/" + movie?.image} alt="cover" className="cover-movie" /></a>
+                            <div className="hero-movie">
                                 <div className="details">
                                     <div className="title1">{movie?.name} <span>PG-13</span></div>
                                     <div className="title2">The Battle of the Five Armies</div>
@@ -113,6 +136,7 @@ function ViewOne(props) {
 
         </div>
 
+                        </>
     );
 }
 

@@ -3,13 +3,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getfiltermovies } from '../../Actions/MovieActions';
 import "../../Assets/Styles/home.css"
 import { groups } from './GroupNum'
-import { Card } from 'antd';
 import { getcategories } from '../../Actions/CategoryActions';
 import Checkbox from './Checkbox';
 import Radiobox from './Radiobox';
-import { Radio } from 'antd';
+//import { Radio } from 'antd';
 import MovieCard from './MovieCard';
 import { Link } from 'react-router-dom'
+import NavBar_Home from '../../Components/Home/NavBar_Home';
+
 // import Paper from '@mui/material/Paper';
 // import InputBase from '@mui/material/InputBase';
 // import Divider from '@mui/material/Divider';
@@ -24,6 +25,24 @@ function Allmovies(props) {
     useEffect(() => {
         dispatch(getcategories())
         LoadfilterResults(myFilters.filters)
+
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = document.querySelectorAll('.navbar-burger')
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach(el => {
+            el.addEventListener('click', () => {
+
+                // Get the target from the "data-target" attribute
+                const target = el.dataset.target;
+                const $target = document.getElementById(target);
+
+                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+
+            });
+        });
 
     }, [])
 
@@ -76,7 +95,7 @@ function Allmovies(props) {
     const loadmorebutton = () => {
         return (
             size > 0 && size >= limit && (
-                <button className='btn btn-warning mb-5' onClick={loadmore}>
+                <button className='button is-warning' onClick={loadmore}>
                     loadMore
                 </button>
             )
@@ -121,43 +140,66 @@ function Allmovies(props) {
 
 
     return (
+        <>
+            <NavBar_Home />
 
-        <div className='container-fluid'>
-            <div className='row justify-content-center'>
-                <div className='col-12'><div className='row justify-content-center mt-5 mb-5'><h1 className='col-4 main_txt'>asas</h1><div className='col-xl-5 col-lg-5 col-md-6 col-sm-8 col-12'></div></div></div>
-                <div className='col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 brand mb-5'>
-                    <div className='row justify-content-center'>
-                        <div className='col-xl-8 col-lg-8 col-md-8 col-sm-8 col-6'>
-                            <h3 className='filter'>Research Area</h3>
-                            <Checkbox areas={categories}
-                                handleFilters={filters => handleFilters(filters, 'area')} />
+            <section className="hero is-fullheight-with-navbar movie-div">
 
-                        </div>
-                    </div>
+                <div className="hero-body">
+                    <div className="container is-fluid">
 
-                    <div className='row justify-content-center mt-5 mb-5'>
-                        <Radio.Group className='col-xl-8 col-lg-8 col-md-8 col-sm-8 col-6'>
-                            <h3 className='filter'>Alocated Groups</h3>
-                            <Radiobox groups={groups}
-                                handleFilters={filters => handleFilters(filters, 'groups')} />
-                        </Radio.Group>
-                    </div>
+                        <div className='title is-2 has-text-white'>All Movies</div><br />
+                        <div class="columns">
+                            <div class="column is-2">
 
-                </div>
-                <div className='col-xl-8 col-lg-8 col-md-8 col-sm-10 col-12'>
-                    <div className='row justify-content-center m_row'>
-                        {filterResults ? (filterResults.map((mov, i) => (
-                            <div key={i} className='col-3'>
-                                <Link to={`/view/${mov._id}`}><MovieCard movie={mov} /></Link>
+                                <div className='container'>
+                                    <div className=''>
+                                        <div className='title is-4 has-text-white'>Research Area</div><br />
+                                        <Checkbox areas={categories}
+                                            handleFilters={filters => handleFilters(filters, 'area')} />
+
+                                    </div>
+                                </div>
+
+                                <div className='container'>
+                                    <div Group className='radio'>
+                                        <h3 className=''>Alocated Groups</h3><br />
+                                        <Radiobox groups={groups}
+                                            handleFilters={filters => handleFilters(filters, 'groups')} />
+                                    </div>
+                                </div>
+
                             </div>
+                            <div class="column">
 
-                        ))) : ''}
+
+
+                                <div className='columns is-multiline'>
+                                    {filterResults ? (filterResults.map((mov, i) => (
+                                        <div key={i} className='column is-one-fifth'>
+                                            <Link to={`/view/${mov._id}`}><MovieCard movie={mov} /></Link>
+                                        </div>
+
+                                    ))) : ''}
+
+                                </div>
+
+
+
+
+
+
+
+                                {loadmorebutton()}
+                            </div>
+                        </div>
+
+
 
                     </div>
                 </div>
-            </div>
-            {loadmorebutton()}
-        </div>
+            </section>
+        </>
     );
 }
 
