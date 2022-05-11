@@ -15,7 +15,10 @@ const ShowSchema = new mongoose.Schema({
     time: {
         type: Number
     },
-    seatbook: [{ type: String }]
+    seatbook: [{ type: String }],
+    price: {
+        type: Number
+    }
 
 
 }, { timestamps: true })

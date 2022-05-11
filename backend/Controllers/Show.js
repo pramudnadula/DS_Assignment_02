@@ -50,7 +50,7 @@ exports.specificshows = (req, res) => {
 
 exports.getoneshow = (req, res) => {
     let mid = req.params.id;
-    const show = Show.findById(mid).populate("hid").then((sh) => {
+    const show = Show.findById(mid).populate("hid").populate("mid").then((sh) => {
         res.json(sh);
     }).catch((err) => {
         console.log(err);

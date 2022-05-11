@@ -9,6 +9,7 @@ function Addshow(props) {
     const [hid, sethid] = useState("")
     const [date, setdate] = useState("")
     const [time, settime] = useState("")
+    const [price, setprice] = useState()
     const { halls } = useSelector(state => state.halls);
     const { movies } = useSelector(state => state.movies);
 
@@ -25,7 +26,8 @@ function Addshow(props) {
             hid,
             mid,
             date,
-            time
+            time,
+            price
         }
         console.log(show)
 
@@ -66,6 +68,9 @@ function Addshow(props) {
                         <input type="date" className="form-control" onChange={(e) => { setdate(e.target.value) }} placeholder="name" aria-label="Username" aria-describedby="basic-addon1" />
                     </div><br></br><br></br>
 
+                    <label>Enter Ticket price</label>
+                    <input type='number' onChange={(e) => { setprice(e.target.value) }} /><br></br><br></br>
+
                     <label>select Time slot</label>
                     <select onChange={(e) => { settime(e.target.value) }}>
                         <option>select option</option>
@@ -76,7 +81,7 @@ function Addshow(props) {
                     <input type="submit" value="create" />
                 </form>
             </div>
-        </div>
+        </div >
     );
 }
 

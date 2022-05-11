@@ -1,14 +1,21 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import '../../Assets/Styles/book.css'
+import { Tabs, Radio, Space } from 'antd';
+const { TabPane } = Tabs;
 
 function Booking(props) {
 
     const [show, setshow] = useState()
     const [row, setrow] = useState()
     const [col, setcol] = useState()
+    const [data, setdata] = useState(0)
     const [seats, setseats] = useState([])
+    const [total, settotal] = useState(0)
+    const [mov, setmov] = useState()
+
     const [savedata, setsavedata] = useState([])
+    var cartitems = JSON.parse(localStorage.getItem("cart")) || []
 
     let divide = []
     let selectedseats = []
@@ -18,6 +25,7 @@ function Booking(props) {
             setrow(data.data.hid.rows)
             setcol(data.data.hid.cols)
             setseats(data.data.hid.seats)
+            setmov(data.data.mid)
             selectedseats = data.data.seatbook
             setsavedata(selectedseats)
 
@@ -48,8 +56,10 @@ function Booking(props) {
 
 
 
-    const clickfunc = (id) => {
 
+    const clickfunc = (id) => {
+        const ch = document.getElementById("ch")
+        const tota = document.getElementById("total")
         var ds = document.getElementById(id)
         if (ds.classList.contains("ocupied")) {
             return
@@ -63,8 +73,14 @@ function Booking(props) {
         }
         if (selectedseats.includes(id)) {
             selectedseats = selectedseats.filter(item => item !== id)
+            ch.innerHTML = selectedseats
+            tota.innerHTML = (selectedseats.length * show.price)
         } else {
+
             selectedseats.push(id)
+            ch.innerHTML = selectedseats
+            tota.innerHTML = (selectedseats.length * show.price)
+
         }
 
         console.log(selectedseats)
@@ -72,14 +88,25 @@ function Booking(props) {
 
 
     const booktickets = () => {
-        const upshow = {
-            seatbook: [...savedata, ...selectedseats]
+        // const upshow = {
+        //     seatbook: [...savedata, ...selectedseats]
+        // }
+        // axios.put(`http://localhost:8070/show/update/${props.match.params.id}`, upshow).then((data) => {
+        //     alert("booked")
+        // }).catch((err) => {
+        //     console.log(err)
+        // })
+
+        const cartitem = {
+            sid: props.match.params.id,
+            tickets: selectedseats.length,
+            show: show,
+            total: (selectedseats.length * show.price),
+            mov: mov,
+
         }
-        axios.put(`http://localhost:8070/show/update/${props.match.params.id}`, upshow).then((data) => {
-            alert("booked")
-        }).catch((err) => {
-            console.log(err)
-        })
+        cartitems.push(cartitem)
+        localStorage.setItem("cart", JSON.stringify(cartitems))
     }
     let selected = false;
     const findselected = (id) => {
@@ -94,6 +121,7 @@ function Booking(props) {
     return (
         <div className='bok container-fluid'>
             <div className='row justify-content-center'>
+
                 <div className='col-xl-6 col-lg-6 col-md-10 col-sm-12 col-12 '>
                     <div className='row justify-content-center mt-5'>
                         <div className='col-xl-8 col-lg-8 col-md-8 col-sm-10 col-12'>
@@ -142,13 +170,20 @@ function Booking(props) {
                                     ))}
                                 </table>
 
-                                <button onClick={(e) => { booktickets() }} className='btn btn-warning'>Book</button>
+
+
                             </div>
                         </div>
 
 
 
                     </div>
+                </div>
+                <div className='col-4 mt-5'>
+                    <h4>Ticket Price : {show?.price}</h4>
+                    <h4>Booked seats :<p id='ch'></p></h4>
+                    <h4>Total price : <p id='total'></p></h4>
+                    <button onClick={(e) => { booktickets() }} className='btn btn-warning'>Add to cart</button>
                 </div>
             </div>
         </div >
