@@ -4,20 +4,18 @@ import Home from './Pages/Home';
 import Home2 from './Pages/Home2';
 import Addmovie from './Components/Movie/Addmovie';
 import Allmovies from './Components/Movie/Allmovies';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import AddHall from './Components/Hall/AddHall';
 import ViewOne from './Components/Movie/ViewOne';
 import Addshow from './Components/Show/Addshow';
 import Booking from './Components/Show/Booking';
 import Qr from './Components/Qr/Qr';
 import QrRead from './Components/Qr/QrRead';
-import NavBar_Home from './Components/Home/NavBar_Home';
 
 function App() {
   return (
 
     <BrowserRouter>
-      <NavBar_Home />
+   
           <Route path='/' exact component={Home} />
           <Route path='/home' exact component={Home2} />
           <Route path='/addmovie' exact component={Addmovie} />

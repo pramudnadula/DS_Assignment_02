@@ -6,3 +6,23 @@
 .movie_item {
     height: 200px !important;
 }
+
+.navbar-menu.is-active{
+    position: absolute;
+    width: 100%;
+}
+
+
+.home-div{
+
+    background: url(https://cdn.mos.cms.futurecdn.net/Etym2YYubLXCUPjeyPEkiU.jpg);
+}
+
+.movie-div{
+
+    background: url(https://hdwallsource.com/img/2016/6/inception-movie-computer-wallpaper-49336-51002-hd-wallpapers.jpg);
+}
+
+.footer-icon{
+    height:35px
+}

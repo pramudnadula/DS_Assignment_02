@@ -5,8 +5,8 @@ function NavBar_Home() {
   return (
     <nav className="navbar is-light" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <a className="navbar-item" href="https://bulma.io">
-          <img src="" alt='logo' height="28" />
+        <a className="navbar-item" target="_blank" href="https://www.sliit.lk/">
+          <img src="https://static.sliit.lk/wp-content/uploads/2017/12/sliit-web-logo.png" alt='logo' height="28" />
         </a>
 
         <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -19,12 +19,13 @@ function NavBar_Home() {
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-start">
 
-          <Link to="/" className="navbar-item"> Home </Link>
+          <Link to="/" className="navbar-item"> <i className="navbar-item fas fa-home"></i> Home </Link>
 
 
-          <Link to="/dashboard" className="navbar-item"> Dashboard </Link>
-          <Link to="/pipeline" className="navbar-item"> Pipeline </Link>
-          <Link to="/application" className="navbar-item"> Application </Link>
+          <Link to="/all" className="navbar-item"><i className="navbar-item fa fa-film"></i>  All Movies </Link>
+          <Link to="/pipeline" className="navbar-item"><i className="navbar-item fa fa-video-camera"></i> My Movies </Link>
+         
+
 
 
         </div>

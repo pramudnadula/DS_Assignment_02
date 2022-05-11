@@ -18,7 +18,7 @@ function Checkbox({ areas, handleFilters }) {
         handleFilters(newcheckedcategoryid)
     }
     return areas.map((c, i) => (
-        <div className='form-inline d-flex align-items-center py-1' key={i}>
+        <div className='title is-6  has-text-white form-inline d-flex align-items-center py-1' key={i}>
 
             <label className='tick'>{c.name}
                 <input type='checkbox' className='form-check-input' onChange={(e) => { handleToggle(c._id) }} value={checked.indexOf(c._id === -1)} />
