@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { message } from 'antd'
+//import { message } from 'antd'
 import { getHalls } from '../../Actions/Hall';
 import { getmovies } from '../../Actions/MovieActions';
 import { useSelector, useDispatch } from 'react-redux'

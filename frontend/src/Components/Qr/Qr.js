@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import QRCode from 'qrcode';
-import QrReader from 'react-qr-reader';
 import {Link} from 'react-router-dom'
 function Qr() {
   //useStates

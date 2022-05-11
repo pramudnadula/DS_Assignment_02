@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import QRCode from 'qrcode';
 import QrReader from 'react-qr-reader';
 
 function QrRead() {
@@ -16,6 +15,7 @@ function QrRead() {
   const handleScanFile = (result) => {
     if (result) {
       setScanResultFile(result);
+      console.log(result);
     }
   }
   //upload image

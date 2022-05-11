@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
-import { Card } from 'antd';
+//import { Card } from 'antd';
 import { getcategories } from '../../Actions/CategoryActions';
 import Checkbox from './Checkbox';
 import { getHalls } from '../../Actions/Hall';
-const { Meta } = Card;
+//const { Meta } = Card;
 function Addmovie(props) {
 
     const [name, setName] = useState("");

@@ -4,7 +4,6 @@ import Home from './Pages/Home';
 import Home2 from './Pages/Home2';
 import Addmovie from './Components/Movie/Addmovie';
 import Allmovies from './Components/Movie/Allmovies';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import AddHall from './Components/Hall/AddHall';
 import ViewOne from './Components/Movie/ViewOne';
 import Addshow from './Components/Show/Addshow';
@@ -13,6 +12,7 @@ import Qr from './Components/Qr/Qr';
 import QrRead from './Components/Qr/QrRead';
 import NavBar_Home from './Components/Home/NavBar_Home';
 import Cart from './Components/Show/Cart';
+
 
 function App() {
   return (
