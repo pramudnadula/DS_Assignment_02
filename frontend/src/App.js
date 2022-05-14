@@ -10,7 +10,6 @@ import Addshow from './Components/Show/Addshow';
 import Booking from './Components/Show/Booking';
 import Qr from './Components/Qr/Qr';
 import QrRead from './Components/Qr/QrRead';
-import NavBar_Home from './Components/Home/NavBar_Home';
 import Cart from './Components/Show/Cart';
 import Login from './Components/User/login';
 import Register from './Components/User/register';

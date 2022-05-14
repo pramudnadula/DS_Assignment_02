@@ -104,7 +104,7 @@ function Mybookings(props) {
                                         </td>
 
                                         <td className="text-right d-md-block">   {checkavilable(m.createdAt) ? <a href className="btn btn-light" data-abc="true" onClick={(e) => { delbooking(m._id) }} ><i className="fa fa-trash" /></a> : <></>} </td>
-                                        <td><a onClick={(e) => { generateQrCode(m) }} className="btn btn-light"><i class="fa fa-qrcode" aria-hidden="true"></i></a></td>
+                                        <td><a onClick={(e) => { generateQrCode(m) }} className="btn btn-light"><i className="fa fa-qrcode" aria-hidden="true"></i></a></td>
 
                                     </tr>
                                 ))}

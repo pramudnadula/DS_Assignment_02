@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import '../../Assets/Styles/user.css'
-
+import { Link } from 'react-router-dom';
 
 const Login = () => {
 
 
 
   const [userName, setuserName] = useState("")
-  const [email, setemail] = useState("kavi@gmauil.com")
+  const [email, setemail] = useState("kavinduchamith01@gmail.com")
   const [password, setpassword] = useState("Donkavi2@")
   const [test, setTest] = useState(false)
   const [userId, setUserId] = useState('')
@@ -36,7 +36,7 @@ const Login = () => {
         setUserId(res.data.user._id)
         setTest(!test)
 
-        window.location.href = '/';
+        window.location.href = '/all';
 
       })
       .catch((err) => {
@@ -50,24 +50,39 @@ const Login = () => {
 
 
   return (
-    <div className="row justify-content-center">
-      <div className="col-6">
-        <h2 className="text-center">Login</h2>
-        <br></br>
-        <form onSubmit={sendData}>
+    <>
+      <div className='home-div'> </div>
 
-          <div className="input-group mb-3">
-            <input type="email" className="form-control" value="123@gmail.com" placeholder="Email Address" onChange={(e) => { setemail(e.target.value) }} aria-label="Username" aria-describedby="basic-addon1" required />
+      <section className="hero is-fullheight-with-navbar all-home-flexs">
+
+        <div className="hero-body" style={{ padding: '3rem 0.5rem' }}>
+          <div className="container is-widescreen">
+            <div className='content '>
+              <div className="columns is-justify-content-center">
+                <div className="column is-3">
+                  <h2 className="subtitle is-2 is-semibold has-text-white has-text-centered">Login</h2>
+
+                  <form onSubmit={sendData}>
+
+                    <div className="input-group mb-3">
+                      <input type="email" className="input is-primary" value="123@gmail.com" placeholder="Email Address" onChange={(e) => { setemail(e.target.value) }} aria-label="Username" aria-describedby="basic-addon1" required />
+                    </div>
+                    <div className="input-group mb-3">
+                      <input type="password" className="input is-primary" value="Donkavi2@" placeholder="Password" onChange={(e) => { setpassword(e.target.value) }} aria-label="Password" aria-describedby="basic-addon1" required />
+                    </div>
+                    <div>
+                      <button type="submit" className="button is-link is-fullwidth">Login</button>
+                      <Link to="/register"><button className="button is-danger is-fullwidth mt-2">Register</button></Link>
+                      <Link to='/'> <button type="submit" className="button is-success is-fullwidth mt-2">Back to Home Page</button></Link>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="input-group mb-3">
-            <input type="password" className="form-control" value="Donkavi2@" placeholder="Password" onChange={(e) => { setpassword(e.target.value) }} aria-label="Password" aria-describedby="basic-addon1" required />
-          </div>
-          <div className="text-center">
-            <button type="submit" className="btn btn-primary form-control">Login</button>
-          </div>
-        </form>
-      </div>
-    </div>
+        </div>
+      </section>
+    </>
   );
 }
 export default Login;

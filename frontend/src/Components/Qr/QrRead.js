@@ -48,7 +48,7 @@ function QrRead() {
           <div className="column is-half">
 
             {type ? <>
-              <button className="button is-success" onClick={(e) => { settype(!type) }}><i class="fa fa-camera" aria-hidden="true"></i>Use Camera</button>
+              <button className="button is-success" onClick={(e) => { settype(!type) }}><i className="fa fa-camera" aria-hidden="true"></i>Use Camera</button>
               <QrReader
                 ref={qrRef}
                 delay={300}
@@ -60,7 +60,7 @@ function QrRead() {
 
               <button className="button is-danger" onClick={(e) => { onScanFile() }}>scan to Insert</button>
             </> : <>
-              <button className="button is-warning" onClick={(e) => { settype(!type) }}><i class="fa fa-picture-o" aria-hidden="true"></i>Use Image</button>
+              <button className="button is-warning" onClick={(e) => { settype(!type) }}><i className="fa fa-picture-o" aria-hidden="true"></i>Use Image</button>
               <QrReader
                 delay={300}
                 style={{ width: '100%' }}

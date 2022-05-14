@@ -149,8 +149,8 @@ function Allmovies(props) {
                     <div className="container is-fluid">
 
                         <div className='title is-2 has-text-white'>All Movies</div><br />
-                        <div class="columns">
-                            <div class="column is-2">
+                        <div className="columns">
+                            <div className="column is-2">
 
                                 <div className='container'>
                                     <div className=''>
@@ -170,7 +170,7 @@ function Allmovies(props) {
                                 </div>
 
                             </div>
-                            <div class="column">
+                            <div className="column">
                                 <div className='columns is-multiline '>
                                     {filterResults ? (filterResults.map((mov, i) => (
                                         <div key={i} className='column is-2 '>
