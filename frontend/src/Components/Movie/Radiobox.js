@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 //import { Radio } from 'antd';
 
 function Radiobox({ groups, handleFilters }) {
-    
+
     const [Radio, setRadio] = useState('')
 
     const [value, setvalue] = useState(0)
@@ -13,8 +13,8 @@ function Radiobox({ groups, handleFilters }) {
     return groups.map((p, i) => (
         <div key={i}>
             <label>{p.name}</label>
-            <inuput type="radio" className='mr-2 ml-4' value={`${p._id}`} onChange={(e) => { handlechange(e) }} name="rad" />
-               
+            <input type="radio" className='mr-2 ml-4' value={`${p._id}`} onChange={(e) => { handlechange(e) }} name="rad" />
+
         </div >
     ))
     //

@@ -23,8 +23,8 @@ function NavBar_Home() {
 
 
           <Link to="/all" className="navbar-item"><i className="navbar-item fa fa-film"></i>  All Movies </Link>
-          <Link to="/pipeline" className="navbar-item"><i className="navbar-item fa fa-video-camera"></i> My Movies </Link>
-         
+          <Link to="/mybookings" className="navbar-item"><i className="navbar-item fa fa-video-camera"></i> My Movies </Link>
+          <Link to="/qrread" className="navbar-item"> <i class="navbar-item fa fa-qrcode" aria-hidden="true"></i>QR Reader </Link>
 
 
 
@@ -39,7 +39,7 @@ function NavBar_Home() {
             </a>
             <div className="navbar-dropdown">
               <Link to="/myaccount#settings" className="navbar-item"> Settings </Link>
-              <Link to="/myaccount" className="navbar-item"> My Account </Link>
+              <Link to="/profile" className="navbar-item"> My Account </Link>
 
               <hr className="navbar-divider" />
               <a className="navbar-item">

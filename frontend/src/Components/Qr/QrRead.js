@@ -1,12 +1,19 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import QrReader from 'react-qr-reader';
 
 function QrRead() {
   //useStates
-  const [scanResultFile, setScanResultFile] = useState('');
+  const [scanResultFile, setScanResultFile] = useState();
   const [scanResultWebCam, setScanResultWebCam] = useState('');
+  const [scanitems, setscanitems] = useState([])
+  const [type, settype] = useState(true)
+  const [movie, setmovie] = useState()
 
   const qrRef = useRef(null);
+
+  useEffect(() => {
+    setmovie(null)
+  }, [type])
 
   //function fro qr reader
   const handleErrorFile = (error) => {
@@ -14,8 +21,10 @@ function QrRead() {
   }
   const handleScanFile = (result) => {
     if (result) {
-      setScanResultFile(result);
-      console.log(result);
+      // setScanResultFile(result);
+      // console.log(result);
+
+      setmovie(JSON.parse(result))
     }
   }
   //upload image
@@ -27,35 +36,70 @@ function QrRead() {
   }
   const handleScanWebCam = (result) => {
     if (result) {
-      setScanResultWebCam(result);
+
+      setmovie(JSON.parse(result))
     }
   }
   return (
     <div>
       <div className='container is-max-widescreen'>
-        <h2><b>QR Code</b></h2>
+
         <div className="columns">
           <div className="column is-half">
-            <button className="button is-danger" onClick={(e) => { onScanFile() }}>scan to Insert</button>
-            <QrReader
-              ref={qrRef}
-              delay={300}
-              style={{ width: '100%' }}
-              onError={handleErrorFile}
-              onScan={handleScanFile}
-              legacyMode
-            />
-            <h3>Scanned Code: {scanResultFile}</h3>
+
+            {type ? <>
+              <button className="button is-success" onClick={(e) => { settype(!type) }}><i class="fa fa-camera" aria-hidden="true"></i>Use Camera</button>
+              <QrReader
+                ref={qrRef}
+                delay={300}
+                style={{ width: '100%' }}
+                onError={handleErrorFile}
+                onScan={handleScanFile}
+                legacyMode
+              />
+
+              <button className="button is-danger" onClick={(e) => { onScanFile() }}>scan to Insert</button>
+            </> : <>
+              <button className="button is-warning" onClick={(e) => { settype(!type) }}><i class="fa fa-picture-o" aria-hidden="true"></i>Use Image</button>
+              <QrReader
+                delay={300}
+                style={{ width: '100%' }}
+                onError={handleErrorWebCam}
+                onScan={handleScanWebCam}
+              />
+
+            </>}
           </div>
           <div className="column">
-            <h3>Qr Code Scan by Web Cam</h3>
-            <QrReader
-              delay={300}
-              style={{ width: '100%' }}
-              onError={handleErrorWebCam}
-              onScan={handleScanWebCam}
-            />
-            <h3>Scanned By WebCam Code: {scanResultWebCam}</h3>
+            <div>
+              {movie ? <>
+                <div className="card" style={{ width: '18rem' }}>
+                  <img src={"http://localhost:8070/" + movie.image} className="card-img-top" alt="..." />
+                  <div className="card-body">
+                    <h2 className="card-title">{movie.name}</h2>
+                    <p className="card-text">{movie.seats}</p>
+                  </div>
+                  <ul className="list-group list-group-flush">
+                    <li className="list-group-item">{"Date = " + movie.date}</li>
+                    <li className="list-group-item">{"Time = " + movie.time}</li>
+                    <li className="list-group-item">{"#Tickets = " + movie.seats.length}</li>
+                    <li className="list-group-item">{"Ticket Price = " + movie.price}</li>
+                    <li className="list-group-item">{"Total Price = " + (movie.price * movie.seats.length)}</li>
+
+                  </ul>
+                  <div className="card-body">
+                    <a href="#" className="card-link">Card link</a>
+                    <a href="#" className="card-link">Another link</a>
+                  </div>
+                </div>
+              </> : <>
+
+              </>}
+
+
+            </div>
+
+
           </div>
 
         </div>

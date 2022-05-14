@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import '../../Assets/Styles/book.css'
-import { Tabs, Radio, Space } from 'antd';
-const { TabPane } = Tabs;
+// import { Tabs, Radio, Space } from 'antd';
+// const { TabPane } = Tabs;
 
 function Booking(props) {
 
@@ -96,6 +96,10 @@ function Booking(props) {
         // }).catch((err) => {
         //     console.log(err)
         // })
+        if (selectedseats.length === 0) {
+            alert("please select seats")
+            return
+        }
 
         const cartitem = {
             sid: props.match.params.id,
@@ -103,10 +107,14 @@ function Booking(props) {
             show: show,
             total: (selectedseats.length * show.price),
             mov: mov,
+            num: cartitems.length,
+            seatbook: [...savedata, ...selectedseats],
+            sseats: selectedseats
 
         }
         cartitems.push(cartitem)
         localStorage.setItem("cart", JSON.stringify(cartitems))
+        window.location.href = '/cart';
     }
     let selected = false;
     const findselected = (id) => {

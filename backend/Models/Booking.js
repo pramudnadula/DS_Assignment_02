@@ -17,6 +17,14 @@ const BookingSchema = new mongoose.Schema({
     },
     total: {
         type: Number
+    },
+    mid: {
+        type: ObjectId,
+        ref: "movie"
+    },
+    seats: [{ type: String }],
+    token: {
+        type: String
     }
 
 

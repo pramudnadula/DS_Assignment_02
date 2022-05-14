@@ -1,6 +1,8 @@
 const Show = require('../Models/Show')
 const moment = require('moment')
 const Movie = require('../Models/Movie')
+const User = require('../Models/User')
+const Hall = require('../Models/MovieHall')
 exports.allshows = (req, res) => {
     Show.find().exec((err, result) => {
         if (err) {
@@ -73,3 +75,38 @@ exports.updateshow = (req, res) => {
         res.status(500).send({ status: "error in updating data", error: err.message });
     })
 }
+
+exports.updatecart = (req, res) => {
+    const { cart } = req.body;
+
+    for (var i = 0; i < cart.length; i++) {
+        const update = Show.findByIdAndUpdate({ _id: cart[i].sid }, {
+            $push: { seatbook: cart[i].seatbook }
+        }).then(() => {
+            res.status(200).send({ status: "show updated" })
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).send({ status: "error in updating data", error: err.message });
+        })
+    }
+
+}
+
+exports.analytics = async (req, res) => {
+    const scount = await Show.count();
+    const hcount = await Hall.count();
+    const ucount = await User.count();
+    const mcount = await Movie.count();
+
+    const analytic = {
+        scount,
+        hcount,
+        ucount,
+        mcount
+    }
+
+    res.status(200).send(analytic)
+
+}
+
+

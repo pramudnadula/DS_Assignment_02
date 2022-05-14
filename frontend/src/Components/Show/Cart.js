@@ -1,18 +1,58 @@
+import axios from 'axios';
+import StripeCheckout from 'react-stripe-checkout';
 import React, { useEffect, useState } from 'react';
 import '../../Assets/Styles/cart.css'
 function Cart(props) {
     var it = JSON.parse(localStorage.getItem("cart"))
+    var user = JSON.parse(localStorage.getItem("user"))
     const [cartitems, setcartitems] = useState(it)
+
     const [total, settotal] = useState(0)
     console.log(cartitems)
     useEffect(() => {
         calctotal()
     }, [cartitems])
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cartitems))
+
+
+    }, [cartitems])
 
     const calctotal = () => {
-        for (var i = 0; i < cartitems.length; i++) {
+        for (var i = 0; i < cartitems?.length; i++) {
             settotal(total + cartitems[i].total)
         }
+    }
+
+
+
+
+    const removecart = (id) => {
+        setcartitems(cartitems.filter(item => item.num !== id))
+    }
+
+    const bookmovies = () => {
+        const data = {
+            cart: cartitems,
+            uid: user._id,
+
+        }
+        axios.post('http://localhost:8070/booking', data).then((resu) => {
+
+        }).catch((err) => {
+            console.log(err)
+        })
+
+
+        axios.put(`http://localhost:8070/show/updatecart`, data).then((da) => {
+            alert("booked")
+        }).catch((err) => {
+            console.log(err)
+        })
+
+        localStorage.setItem("cart", null)
+
+        window.location.href = '/all';
     }
     return (
         <div>
@@ -31,12 +71,12 @@ function Cart(props) {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {cartitems.map((m, i) => (
+                                        {cartitems?.map((m, i) => (
 
                                             <tr className='table_row'>
                                                 <td>
                                                     <figure className="itemside align-items-center">
-                                                        <div className="aside"><img src={"http://localhost:8070/" + m.mov.image} className="img-sm" /></div>
+                                                        <div className="aside"><img src={"http://localhost:8070/" + m.mov?.image} className="img-sm" /></div>
                                                         <figcaption className="info">
                                                             <h3 className='txt'>{m.mov.name}</h3>
                                                             <p className="text-muted small txt2">{m.show.date}<br /> 11.00pm</p>
@@ -47,7 +87,7 @@ function Cart(props) {
                                                 <td>
                                                     <div className="price-wrap"> <var className="price">${m.total}</var> <small className="text-muted"> ${m.show.price} </small> </div>
                                                 </td>
-                                                <td className="text-right d-md-block"> <a data-original-title="Save to Wishlist" title href className="btn btn-light" data-toggle="tooltip" data-abc="true"> <i className="fa fa-heart" /></a> <a href className="btn btn-light" data-abc="true"> <i className="fa fa-trash" /></a> </td>
+                                                <td className="text-right d-md-block"> <a data-original-title="Save to Wishlist" title href className="btn btn-light" data-toggle="tooltip" data-abc="true"> <i className="fa fa-heart" /></a> <a href className="btn btn-light" data-abc="true" onClick={(e) => { removecart(i) }}> <i className="fa fa-trash" /></a> </td>
                                             </tr>
                                         ))}
 
@@ -66,6 +106,7 @@ function Cart(props) {
                                 </form>
                             </div>
                         </div>
+
                         <div className="card">
                             <div className="card-body">
                                 <dl className="dlist-align">
@@ -80,12 +121,24 @@ function Cart(props) {
                                     <dt>Total:</dt>
                                     <dd className="text-right text-dark b ml-3"><strong>${total}</strong></dd>
                                 </dl>
-                                <hr /> <a href="#" className="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a> <a href="#" className="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Continue Shopping</a>
+                                <hr />
+                                <StripeCheckout
+                                    shippingAddress
+                                    currency='LKR'
+                                    amount={total}
+                                    token={bookmovies}
+                                    stripeKey="pk_test_51KON7QSGc2uzmcTNMsY4QEFqEOPT7kUQaFthMpzSvbbeDYNxBvvPTkiZDnQhMMuuLadaLvFR36OxyQBbVKmXkYnT000ZDxnzBd"
+                                >
+                                    <a href="#" className="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a>
+                                </StripeCheckout> <a href="#" className="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Continue Shopping</a>
                             </div>
                         </div>
                     </aside>
                 </div>
             </div>
+
+
+
         </div>
 
     );
