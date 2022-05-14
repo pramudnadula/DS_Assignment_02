@@ -78,56 +78,118 @@ function Addmovie(props) {
 
 
     return (
-        <div className='container-fluid'>
-            <div className='row justify-content-center'>
-                <div className='col-4'>
-                    <form onSubmit={sendData}>
+        <section className="hero is-fullheight admin-div">
+            <div className="hero-body" style={{ padding: '3rem 0.5rem' }}>
+                <div className="container is-widescreen">
+                    <div className='columns is-justify-content-center'>
+                        <div className='column is-6'>
+                            <div className="card" style={{ backgroundColor: '#fff6' }}>
+                                <div className='title is-2 has-text-danger-dark has-text-centered has-background-danger-light pb-3 pt-2'>
+                                    <b>Adding Movies</b>
+                                </div>
+                                <form onSubmit={sendData}>
+                                    <div className="field has-addons m-3 pt-3">
+                                        <div className="control is-expanded">
+                                            <div className="is-fullwidth">
+                                                <input type="text" className="input" onChange={(e) => { setName(e.target.value) }} placeholder="name" aria-label="Username" />
+                                            </div>
+                                        </div>
+                                        <div className="button control is-static">
+                                            <span className="icon is-left">
+                                                <i className="fa fa-film"></i>
+                                            </span>
+                                            <div type="submit" className=" is-primary is-static mr-3 pr-1">Movie Name</div>
+                                        </div>
+                                    </div>
+                                    <div className="field has-addons m-3 pt-3">
+                                        <div className="control is-expanded">
+                                            <div className="button control is-static is-fullwidth">
+                                                <span className="icon is-left">
+                                                    <i className="fa fa-pencil-square-o"></i>
+                                                </span>
+                                                <div type="submit" className=" is-primary is-static mr-3 pr-1">Movie Description</div>
+                                            </div>
+                                            <div className="is-fullwidth">
+                                                <textarea class="textarea" onChange={(e) => { setdescription(e.target.value) }} placeholder="Textarea"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="field has-addons m-3 pt-3">
+                                        <div className="control is-expanded">
+                                            <div className="is-fullwidth">
+                                                <input type="date" className="input" onChange={(e) => { setfrom(e.target.value) }} placeholder="name" aria-label="Username" />
+                                            </div>
+                                        </div>
+                                        <div className="button control is-static">
+                                            <span className="icon is-left">
+                                                <i className="fa fa-calendar"></i>
+                                            </span>
+                                            <div type="submit" className=" is-primary is-static mr-3 pr-1">Movie Start Date</div>
+                                        </div>
+                                    </div>
+                                    <div className="field has-addons m-3 pt-3">
+                                        <div className="control is-expanded">
+                                            <div className="is-fullwidth">
+                                                <input type="date" className="input" onChange={(e) => { setto(e.target.value) }} placeholder="name" aria-label="Username" />
+                                            </div>
+                                        </div>
+                                        <div className="button control is-static">
+                                            <span className="icon is-left">
+                                                <i className="fa fa-calendar"></i>
+                                            </span>
+                                            <div type="submit" className=" is-primary is-static mr-3 pr-1">Movie End Date</div>
+                                        </div>
+                                    </div>
 
-                        <div className="input-group mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="basic-addon1">@</span>
+                                   
+
+
+                                    <div className="field has-addons m-3 pt-3">
+                                        <div className="control is-expanded">
+                                            <div className="button control is-static is-fullwidth">
+                                                <span className="icon is-left">
+                                                    <i className="fa fa-check"></i>
+                                                </span>
+                                                <div type="submit" className=" is-primary is-static mr-3 pr-1">Movie Catagory</div>
+                                            </div>
+                                            <div className="" style={{display: 'contents !important'}}>
+                                            <Checkbox  className="" areas={categories}
+                                                        handleFilters={filters => handleFilters(filters, 'area')} />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="field has-addons m-3 pt-3">
+                                        <div className="control is-expanded">
+                                            <div className="is-fullwidth">
+                                                <input className="input" type="file" name="resume" onClick={(e) => { console.log(ida) }} onChange={upload} id="inputGroupFile04" />
+
+                                            </div>
+                                        </div>
+                                        <div className="button control is-static">
+                                            <span className="icon is-left">
+                                                <i className="fas fa-upload"></i>
+                                            </span>
+                                            <div type="submit" className=" is-primary is-static mr-3 pr-1">Choose a file…</div>
+                                        </div>
+                                    </div>
+
+                                    <div className=" has-background-danger-light pt-1 pb-2">
+                                        <div className=" mt-5 mr-3 ml-3 pb-3 ">
+                                            <button className="button is-danger is-fullwidth " type='submit' value="Create" >Create a Movie</button>
+                                        </div>
+                                    </div>
+
+
+                                </form>
                             </div>
-                            <input type="text" className="form-control" onChange={(e) => { setName(e.target.value) }} placeholder="name" aria-label="Username" aria-describedby="basic-addon1" />
-                        </div>
-                        <div className="input-group mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="basic-addon1">@</span>
-                            </div>
-                            <input type="text" className="form-control" onChange={(e) => { setdescription(e.target.value) }} placeholder="description" aria-label="Username" aria-describedby="basic-addon1" />
                         </div>
 
-                        <div className="input-group mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="basic-addon1">@</span>
-                            </div>
-                            <input type="date" className="form-control" onChange={(e) => { setfrom(e.target.value) }} placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
-                        </div>
-                        <div className="input-group mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="basic-addon1">@</span>
-                            </div>
-                            <input type="date" className="form-control" onChange={(e) => { setto(e.target.value) }} placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
-                        </div>
+                    </div >
 
-
-
-                        <Checkbox areas={categories}
-                            handleFilters={filters => handleFilters(filters, 'area')} />
-
-
-
-
-                        <div className="input-group mb-3">
-                            <input type="file" onClick={(e) => { console.log(ida) }} onChange={upload} id="inputGroupFile04" />
-                        </div>
-
-                        <input type='submit' value="Create" className='btn btn-warning' />
-                    </form>
-                </div>
-
-            </div >
-
-        </div >
+                </div >
+            </div>
+        </section>
     );
 }
 

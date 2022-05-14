@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 import '../../Assets/Styles/user.css'
 
@@ -7,7 +7,7 @@ const AdminLogin = () => {
 
 
 
-    const [userName, setuserName] = useState("")
+    //const [userName, setuserName] = useState("")
     const [email, setemail] = useState("madmin@gmail.com")
     const [password, setpassword] = useState("Donkavi2@")
     const [test, setTest] = useState(false)
@@ -37,6 +37,7 @@ const AdminLogin = () => {
 
                 console.log(res.data.token)
                 setUserId(res.data.user._id)
+                console.log(userId)
                 setTest(!test)
 
                 window.location.href = '/dashboard'

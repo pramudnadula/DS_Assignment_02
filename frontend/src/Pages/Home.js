@@ -32,15 +32,15 @@ function Home() {
   const slideImages = [
     {
       url: 'https://raw.githubusercontent.com/brixiobodino/coffeholic/main/banner.jpg',
-      caption: 'Slide 1'
+      // caption: 'Slide 1'
     },
     {
       url: 'https://i.ytimg.com/vi/586CpeypGkQ/maxresdefault.jpg',
-      caption: 'Slide 2'
+      // caption: 'Spider Man'
     },
     {
       url: 'https://images.indianexpress.com/2022/05/doctor-strange-madness-multiverse-review-.jpg',
-      caption: 'Slide 3'
+      // caption: 'Doctor Strange'
     },
   ];
 
@@ -90,7 +90,7 @@ function Home() {
             {slideImages.map((slideImage, index) => (
               <div className="each-slide" key={index}>
                 <div style={{ 'backgroundImage': `url(${slideImage.url})` }}>
-                  <span>{slideImage.caption}</span>
+                  {/* <span>{slideImage.caption}</span> */}
                 </div>
               </div>
             ))}
