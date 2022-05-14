@@ -8,7 +8,7 @@ const Login = () => {
 
 
   const [userName, setuserName] = useState("")
-  const [email, setemail] = useState("kavi@gmauil.com")
+  const [email, setemail] = useState("kavinduchamith01@gmail.com")
   const [password, setpassword] = useState("Donkavi2@")
   const [test, setTest] = useState(false)
   const [userId, setUserId] = useState('')

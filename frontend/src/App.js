@@ -20,6 +20,12 @@ import AdminLogin from './Components/Admin/AdminLogin';
 import AdminDashboard from './Components/Admin/AdminDashboard';
 import AllMovies from './Components/Admin/AllMovies';
 import AllHalls from './Components/Admin/AllHalls';
+import AllShows from './Components/Admin/AllShows';
+import EditShow from './Components/Admin/EditShow';
+import EditMovie from './Components/Admin/EditMovie';
+import EditHall from './Components/Admin/EditHall';
+import Allusers from './Components/Admin/Allusers';
+import AllBookings from './Components/Admin/AllBookings';
 
 
 function App() {
@@ -46,6 +52,13 @@ function App() {
       <Route path='/dashboard' exact component={AdminDashboard} />
       <Route path='/allmovies' exact component={AllMovies} />
       <Route path='/allhalls' exact component={AllHalls} />
+      <Route path='/allshow' exact component={AllShows} />
+      <Route path='/updateshow/:id' exact component={EditShow} />
+      <Route path='/updatemovie/:id' exact component={EditMovie} />
+      <Route path='/updatehall/:id' exact component={EditHall} />
+      <Route path='/users' exact component={Allusers} />
+      <Route path='/bookings' exact component={AllBookings} />
+
 
 
     </BrowserRouter>

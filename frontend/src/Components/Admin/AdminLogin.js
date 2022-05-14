@@ -8,8 +8,8 @@ const AdminLogin = () => {
 
 
     const [userName, setuserName] = useState("")
-    const [email, setemail] = useState("madmin@gmail.com")
-    const [password, setpassword] = useState("Donkavi2@")
+    const [email, setemail] = useState("")
+    const [password, setpassword] = useState("")
     const [test, setTest] = useState(false)
     const [type, settype] = useState('')
     const [userId, setUserId] = useState('')
@@ -32,8 +32,8 @@ const AdminLogin = () => {
                     console.log(res)
 
                 }
-                localStorage.setItem("user", JSON.stringify(res.data.user))
-                localStorage.setItem("token", res.data.token)
+                localStorage.setItem("admin", JSON.stringify(res.data.user))
+                localStorage.setItem("atoken", res.data.token)
 
                 console.log(res.data.token)
                 setUserId(res.data.user._id)
@@ -61,10 +61,10 @@ const AdminLogin = () => {
                     <label>Movie Admin</label> <input type="radio" required value="ma" name="rad" onChange={(e) => { settype(e.target.value) }} /><br></br>
                     <label>System Admin</label> <input type="radio" required value="sa" name="rad" onChange={(e) => { settype(e.target.value) }} />
                     <div className="input-group mb-3">
-                        <input type="email" className="form-control" value="123@gmail.com" placeholder="Email Address" onChange={(e) => { setemail(e.target.value) }} aria-label="Username" aria-describedby="basic-addon1" required />
+                        <input type="email" className="form-control" placeholder="Email Address" onChange={(e) => { setemail(e.target.value) }} aria-label="Username" aria-describedby="basic-addon1" required />
                     </div>
                     <div className="input-group mb-3">
-                        <input type="password" className="form-control" value="Donkavi2@" placeholder="Password" onChange={(e) => { setpassword(e.target.value) }} aria-label="Password" aria-describedby="basic-addon1" required />
+                        <input type="password" className="form-control" placeholder="Password" onChange={(e) => { setpassword(e.target.value) }} aria-label="Password" aria-describedby="basic-addon1" required />
                     </div>
                     <div className="text-center">
                         <button type="submit" className="btn btn-primary form-control">Login</button>

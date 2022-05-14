@@ -1,4 +1,5 @@
 const Hall = require('../Models/MovieHall')
+const Show = require('../Models/Show')
 
 
 exports.addhall = (req, res) => {
@@ -35,4 +36,46 @@ exports.allHalls = (req, res) => {
         }
         res.json(result)
     })
+}
+
+exports.updateHall = async (req, res) => {
+    let mid = req.params.id;
+    const { rate, name } = req.body;
+    try {
+        await Hall.findOneAndUpdate({ _id: mid }, { rate, name }).then(data => {
+            res.send({ status: "hall updated" })
+        }).catch(err => {
+
+        })
+
+
+
+
+    } catch (error) {
+        res.status(500).send({ status: "error in updating data", error: error.message });
+    }
+}
+
+
+exports.deleteHall = async (req, res) => {
+    let delid = req.params.id;
+    try {
+        await Hall.findByIdAndDelete(delid);
+        await Show.deleteMany({ hid: delid })
+        res.send("deleted")
+    } catch (err) {
+        res.status(500).send({ status: "error in deleting data", error: err.message });
+    }
+
+}
+
+exports.getonehall = (req, res) => {
+    let mid = req.params.id;
+    const movie = Hall.findById(mid).then((mov) => {
+        res.json(mov);
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).send({ status: "error in fetching", error: err.message });
+    })
+
 }

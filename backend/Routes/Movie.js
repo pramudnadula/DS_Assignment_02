@@ -1,4 +1,4 @@
-const { addMovie, allmovies, listbysearch, getone } = require("../Controllers/Movie");
+const { addMovie, allmovies, listbysearch, getone, allmoviesadmin, updatemovie, deletemovie } = require("../Controllers/Movie");
 const multer = require('multer')
 const router = require("express").Router();
 const Movie = require('../Models/Movie')
@@ -57,8 +57,11 @@ router.route("/add").post(upload.single('studentImage'), (req, res) => {
 
 
 router.get('/list', allmovies)
+router.get('/all', allmoviesadmin)
 router.post('/by/search', listbysearch)
 router.get('/getone/:id', getone)
+router.put('/update/:id', updatemovie)
+router.delete('/delete/:id', deletemovie)
 
 
 

@@ -3,8 +3,9 @@ const moment = require('moment')
 const Movie = require('../Models/Movie')
 const User = require('../Models/User')
 const Hall = require('../Models/MovieHall')
+const Booking = require('../Models/Booking')
 exports.allshows = (req, res) => {
-    Show.find().exec((err, result) => {
+    Show.find().populate("mid").populate("hid").exec((err, result) => {
         if (err) {
             return res.status(400).json({
                 error: String(err)
@@ -97,16 +98,47 @@ exports.analytics = async (req, res) => {
     const hcount = await Hall.count();
     const ucount = await User.count();
     const mcount = await Movie.count();
+    const bcount = await Booking.count();
 
     const analytic = {
         scount,
         hcount,
         ucount,
-        mcount
+        mcount,
+        bcount
     }
 
     res.status(200).send(analytic)
 
 }
 
+exports.deleteshow = async (req, res) => {
+    let delid = req.params.id;
+    try {
+        await Show.findByIdAndDelete(delid);
+        await Booking.deleteMany({ sid: delid })
+    } catch (err) {
+        res.status(500).send({ status: "error in deleting data", error: err.message });
+    }
 
+
+}
+
+
+exports.updateoneshow = async (req, res) => {
+    let showid = req.params.id;
+    const { date, time, price } = req.body;
+    try {
+        await Show.findOneAndUpdate({ _id: showid }, { date, time, price }).then(data => {
+            res.send({ status: "show updated" })
+        }).catch(err => {
+
+        })
+
+
+
+
+    } catch (error) {
+        res.status(500).send({ status: "error in updating data", error: error.message });
+    }
+}

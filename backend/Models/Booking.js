@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 var ObjectId = require('bson').ObjectId;
 const BookingSchema = new mongoose.Schema({
     uid: {
-        type: ObjectId
+        type: ObjectId,
+        ref: "user"
 
     },
     sid: {

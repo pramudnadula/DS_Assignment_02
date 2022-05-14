@@ -7,7 +7,7 @@ function Cart(props) {
     var it = JSON.parse(localStorage.getItem("cart"))
     var user = JSON.parse(localStorage.getItem("user"))
     const [cartitems, setcartitems] = useState(it)
-
+    console.log(cartitems)
     const [total, settotal] = useState(0)
     console.log(cartitems)
     useEffect(() => {
@@ -120,7 +120,7 @@ function Cart(props) {
                                                         </td>
                                                         <td className="" style={{ float: 'right' }}>
                                                             <a className="button is-light " > <i className="fa fa-heart " /></a>
-                                                            <a className="button is-danger" > <i className="fa fa-trash" /></a>
+                                                            <a className="button is-danger" onClick={(e) => { removecart(m.num) }} > <i className="fa fa-trash" /></a>
                                                         </td>
                                                     </tr>
                                                 ))}
