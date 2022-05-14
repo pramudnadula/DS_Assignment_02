@@ -1,7 +1,7 @@
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
+const Booking = require('../Models/Booking')
 const User = require("../Models/User");
 
 //add
@@ -23,7 +23,8 @@ exports.signup = async (req, res, next) => {
       email: email,
       password: hashedPw,
       userName: userName,
-      name: name
+      name: name,
+      type: ""
     });
     const result = await user.save();
     res.status(201).json({ message: "User created!", userId: result._id });
@@ -139,3 +140,36 @@ exports.login = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.getallusers = async (req, res) => {
+  try {
+    const nusers = await User.find({ type: "" })
+    const ausers = await User.find({ type: "ma" })
+    const users = {
+      nusers,
+      ausers
+    }
+    res.json(users)
+
+  } catch (error) {
+    res.status(400).json({
+      error: String(err)
+
+    })
+  }
+
+
+
+}
+
+exports.deleteuser = async (req, res) => {
+  let delid = req.params.id;
+  try {
+    await User.findByIdAndDelete(delid);
+    await Booking.deleteMany({ uid: delid })
+  } catch (err) {
+    res.status(500).send({ status: "error in deleting data", error: err.message });
+  }
+
+
+}

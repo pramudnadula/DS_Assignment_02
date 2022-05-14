@@ -1,7 +1,20 @@
 const Movie = require('../Models/Movie')
+const Booking = require('../Models/Booking')
+const Show = require('../Models/Show')
 var ObjectId = require('bson').ObjectId;
 exports.allmovies = (req, res) => {
     Movie.find().exec((err, result) => {
+        if (err) {
+            return res.status(400).json({
+                error: String(err)
+            })
+        }
+        res.json(result)
+    })
+}
+
+exports.allmoviesadmin = (req, res) => {
+    Movie.find().populate("area").exec((err, result) => {
         if (err) {
             return res.status(400).json({
                 error: String(err)
@@ -85,5 +98,38 @@ exports.getone = (req, res) => {
         console.log(err);
         res.status(500).send({ status: "error in fetching", error: err.message });
     })
+
+}
+
+exports.updatemovie = async (req, res) => {
+    let mid = req.params.id;
+    const { description, rate } = req.body;
+    try {
+        await Movie.findOneAndUpdate({ _id: mid }, { description, rate }).then(data => {
+            res.send({ status: "movie updated" })
+        }).catch(err => {
+
+        })
+
+
+
+
+    } catch (error) {
+        res.status(500).send({ status: "error in updating data", error: error.message });
+    }
+}
+
+
+exports.deletemovie = async (req, res) => {
+    let delid = req.params.id;
+    try {
+        await Movie.findByIdAndDelete(delid);
+        await Booking.deleteMany({ mid: delid })
+        await Show.deleteMany({ mid: delid })
+        res.send("deleted")
+    } catch (err) {
+        res.status(500).send({ status: "error in deleting data", error: err.message });
+    }
+
 
 }
