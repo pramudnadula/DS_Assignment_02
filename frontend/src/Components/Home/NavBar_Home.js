@@ -20,14 +20,11 @@ function NavBar_Home() {
         <div className="navbar-start">
 
           <Link to="/" className="navbar-item"> <i className="navbar-item fas fa-home"></i> Home </Link>
-
-
           <Link to="/all" className="navbar-item"><i className="navbar-item fa fa-film"></i>  All Movies </Link>
           <Link to="/mybookings" className="navbar-item"><i className="navbar-item fa fa-video-camera"></i> My Movies </Link>
           <Link to="/qrread" className="navbar-item"> <i class="navbar-item fa fa-qrcode" aria-hidden="true"></i>QR Reader </Link>
-
-
-
+          <Link to="/cart" className="navbar-item"><i className="navbar-item fa fa-video-camera"></i>My Cart </Link>
+       
         </div>
 
         <div className="navbar-end">

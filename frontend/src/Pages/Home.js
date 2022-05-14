@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react'
+import {Link} from 'react-router-dom'
 import "../Assets/Styles/home.css"
 import NavBar_Home from '../Components/Home/NavBar_Home';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import '../Assets/Styles/Slider.css'
+import netflix from '../Assets/Images/netflix.svg'
 function Home() {
   useEffect(() => {
     // Get all "navbar-burger" elements
@@ -47,9 +49,43 @@ function Home() {
     <>
       <NavBar_Home />
 
+      <div className='home-div'> </div>
 
-      <section className="hero is-fullheight-with-navbar home-div">
-        <div className="slide-container">
+      <section className="hero is-fullheight-with-navbar all-home-flexs">
+        {/* <div className="slide-container">
+          <Slide>
+            {slideImages.map((slideImage, index) => (
+              <div className="each-slide" key={index}>
+                <div style={{ 'backgroundImage': `url(${slideImage.url})` }}>
+                  <span>{slideImage.caption}</span>
+                </div>
+              </div>
+            ))}
+          </Slide>
+        </div> */}
+        <div className="hero-body ">
+          <div className="container ">
+            <div className='is-vcentered '>
+              <div className='content '>
+                <div className='columns'>
+
+                  {/* Landing page Title */}
+                  <div className="column is-5 is-align-self-center">
+                    <h1 className="title is-1 is-light is-semibold is-spaced main-title has-text-white  has-text-centered">Get Your All Movies </h1>
+                    <h2 className="subtitle is-5 is-light is-thin has-text-white has-text-centered">
+                     Netflix, Amazon Prime, Hindi, English , Korean
+                    </h2>
+                    {/* CTA */}
+                    <div className="buttons is-justify-content-center">
+                      <Link to="/all"><button className="button is-success">Go to All Movies</button></Link>
+                    </div>
+                  </div>
+                  {/* Hero image */}
+                  <div className="column is-7">
+                    {/* <figure className="image" style={{ width: '70%' }}>
+                      <img src={netflix} alt="Pipeline SVG" />
+                    </figure> */}
+                    <div className="slide-container">
           <Slide>
             {slideImages.map((slideImage, index) => (
               <div className="each-slide" key={index}>
@@ -60,12 +96,9 @@ function Home() {
             ))}
           </Slide>
         </div>
-
-        
-        <div className="hero-body">
-          <div className="container ">
-            <div className='columns is-vcentered'>
-
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

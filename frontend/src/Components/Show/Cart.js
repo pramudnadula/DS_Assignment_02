@@ -2,6 +2,7 @@ import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
 import React, { useEffect, useState } from 'react';
 import '../../Assets/Styles/cart.css'
+import NavBar_Home from '../Home/NavBar_Home';
 function Cart(props) {
     var it = JSON.parse(localStorage.getItem("cart"))
     var user = JSON.parse(localStorage.getItem("user"))
@@ -11,6 +12,25 @@ function Cart(props) {
     console.log(cartitems)
     useEffect(() => {
         calctotal()
+
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = document.querySelectorAll('.navbar-burger')
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach(el => {
+            el.addEventListener('click', () => {
+
+                // Get the target from the "data-target" attribute
+                const target = el.dataset.target;
+                const $target = document.getElementById(target);
+
+                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+
+            });
+        });
+
     }, [cartitems])
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cartitems))
@@ -55,74 +75,96 @@ function Cart(props) {
         window.location.href = '/all';
     }
     return (
-        <div>
-            <div className="container-fluid">
-                <div className="row justify-content-center">
-                    <div className="col-lg-9 col-xl-9 col-md-9 col-sm-12 col-12">
-                        <div className="card_cart">
-                            <div className="table-responsive">
-                                <table className="table table-borderless table-shopping-cart">
-                                    <thead className="text-muted">
-                                        <tr className="small text-uppercase">
-                                            <th scope="col">Movie</th>
-                                            <th scope="col" >Quantity</th>
-                                            <th scope="col" >Price</th>
-                                            <th scope="col" className="text-right " />
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {cartitems?.map((m, i) => (
 
-                                            <tr className='table_row'>
-                                                <td>
-                                                    <figure className="itemside align-items-center">
-                                                        <div className="aside"><img src={"http://localhost:8070/" + m.mov?.image} className="img-sm" /></div>
-                                                        <figcaption className="info">
-                                                            <h3 className='txt'>{m.mov.name}</h3>
-                                                            <p className="text-muted small txt2">{m.show.date}<br /> 11.00pm</p>
-                                                        </figcaption>
-                                                    </figure>
-                                                </td>
-                                                <td>{m.tickets} </td>
-                                                <td>
-                                                    <div className="price-wrap"> <var className="price">${m.total}</var> <small className="text-muted"> ${m.show.price} </small> </div>
-                                                </td>
-                                                <td className="text-right d-md-block"> <a data-original-title="Save to Wishlist" title href className="btn btn-light" data-toggle="tooltip" data-abc="true"> <i className="fa fa-heart" /></a> <a href className="btn btn-light" data-abc="true" onClick={(e) => { removecart(i) }}> <i className="fa fa-trash" /></a> </td>
-                                            </tr>
-                                        ))}
+        <>
+            <NavBar_Home />
+            <section className="hero is-fullheight-with-navbar movie-div all-home-flexs">
+                <div className="hero-body" style={{ padding: '3rem 0.5rem' }}>
+                    <div className="container is-widescreen">
+                        <div className="columns is-justify-content-center">
+                            <div className="column is-9">
+                                <div className="card">
+                                    <div className="card p-1">
+                                        <table className="table is-striped is-narrow is-hoverable is-fullwidth ">
+                                            <thead>
+                                                <tr className="is-uppercase">
+                                                    <th scope="col"><div className="">Movie</div></th>
+                                                    <th scope="col" ><div className="">Quantity</div></th>
+                                                    <th scope="col" ><div className="">Price</div></th>
+                                                    <th scope="col"  ><div className="" style={{ float: 'right' }}>Action</div></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {cartitems?.map((m, i) => (
 
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <aside className="col-lg-3 col-xl-3 col-md-3 col-sm-6 col-10 ">
-                        <div className="card mb-3">
-                            <div className="card-body">
-                                <form>
-                                    <div className="form-group"> <label>Have coupon?</label>
-                                        <div className="input-group"> <input type="text" className="form-control coupon" name placeholder="Coupon code" /> <span className="input-group-append"> <button className="btn btn-primary btn-apply coupon">Apply</button> </span> </div>
+                                                    <tr key={i}>
+                                                        <td>
+                                                            <figure className="is-flex is-align-items-center">
+                                                                <img src={"http://localhost:8070/" + m.mov.image} style={{ height: '120px' }}/>
+                                                                <figcaption style={{paddingLeft: '0.25rem'}} className="pl-2">
+                                                                    <h3><b>{m.mov.name}</b></h3>
+                                                                    <p className="has-text-grey">{m.show.date}<br /> 11.00pm</p>
+                                                                </figcaption>
+                                                            </figure>
+                                                        </td>
+                                                        <td><div className="ml-5 pl-3 has-text-danger"><b>{m.tickets}</b> </div></td>
+                                                        <td>
+                                                            <div className="price-wrap">
+                                                                <var style={{ fontWeight: '600', color: '#212529' }} >
+                                                                    <div>${m.total}</div>
+                                                                </var>
+                                                                <small className="has-text-grey">
+                                                                    <div> ${m.show.price}</div>
+                                                                </small>
+                                                            </div>
+                                                        </td>
+                                                        <td className="" style={{ float: 'right' }}>
+                                                            <a className="button is-light " > <i className="fa fa-heart " /></a>
+                                                            <a className="button is-danger" > <i className="fa fa-trash" /></a>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+
+
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </form>
+                                </div>
                             </div>
-                        </div>
 
-                        <div className="card">
-                            <div className="card-body">
-                                <dl className="dlist-align">
-                                    <dt>Total price:</dt>
-                                    <dd className="text-right ml-3">$69.97</dd>
-                                </dl>
-                                <dl className="dlist-align">
-                                    <dt>Discount:</dt>
-                                    <dd className="text-right text-danger ml-3">- $10.00</dd>
-                                </dl>
-                                <dl className="dlist-align">
-                                    <dt>Total:</dt>
-                                    <dd className="text-right text-dark b ml-3"><strong>${total}</strong></dd>
-                                </dl>
-                                <hr />
-                                <StripeCheckout
+                            <div className="column">
+                                <div className="card">
+                                    <div className="card-content">
+
+                                        <form>
+                                            <div className="form-group"> <label>Have coupon?</label>
+                                                <div className="input-group"> <input type="text" className="input" name placeholder="Coupon code" />
+                                                    <span className="input-group-append">
+                                                        <button className="button is-danger is-outlined is-fullwidth ">Apply</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+
+                                <div className="card mt-3">
+                                    <div className="card-content">
+                                        <dl className="is-flex">
+                                            <dt>Total price:</dt>
+                                            <dd className="text-right ml-3">$69.97</dd>
+                                        </dl>
+                                        <dl className="is-flex">
+                                            <dt>Discount:</dt>
+                                            <dd className="text-right text-danger ml-3">- $10.00</dd>
+                                        </dl>
+                                        <dl className="is-flex">
+                                            <dt>Total:</dt>
+                                            <dd className="text-right text-dark b ml-3"><strong>${total}</strong></dd>
+                                        </dl>
+                                        <hr />
+                                   <StripeCheckout
                                     shippingAddress
                                     currency='LKR'
                                     amount={total}
@@ -131,15 +173,25 @@ function Cart(props) {
                                 >
                                     <a href="#" className="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a>
                                 </StripeCheckout> <a href="#" className="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Continue Shopping</a>
+                                        <a href="#" className="button is-primary is-outlined is-fullwidth" data-abc="true"> Make Purchase </a>
+                                        <a href="#" className="button is-info is-outlined mt-2 is-fullwidth" data-abc="true">Continue Shopping</a>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                    </aside>
+                    </div>
                 </div>
+
             </div>
 
 
 
         </div>
+
+
+            </section>
+        </>
 
     );
 }

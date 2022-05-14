@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import '../../Assets/Styles/book.css'
+import NavBar_Home from '../Home/NavBar_Home';
+
 // import { Tabs, Radio, Space } from 'antd';
 // const { TabPane } = Tabs;
 
@@ -34,6 +36,24 @@ function Booking(props) {
         }).catch((err) => {
             console.log(err)
         })
+
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = document.querySelectorAll('.navbar-burger')
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach(el => {
+            el.addEventListener('click', () => {
+
+                // Get the target from the "data-target" attribute
+                const target = el.dataset.target;
+                const $target = document.getElementById(target);
+
+                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+
+            });
+        });
     }, [])
 
 
@@ -127,74 +147,75 @@ function Booking(props) {
     }
 
     return (
-        <div className='bok container-fluid'>
-            <div className='row justify-content-center'>
+        <>
+            <NavBar_Home />
+            <section className="hero is-fullheight-with-navbar movie-div">
 
-                <div className='col-xl-6 col-lg-6 col-md-10 col-sm-12 col-12 '>
-                    <div className='row justify-content-center mt-5'>
-                        <div className='col-xl-8 col-lg-8 col-md-8 col-sm-10 col-12'>
-                            <ul className='showcase'>
-                                <li>
-                                    <div className='seat'></div>
-                                    <small>NA</small>
-                                </li>
+                <div className="hero-body">
+                    <div className="container is-fluid">
 
-                                <li>
-                                    <div className='seat selected'></div>
-                                    <small>selected</small>
-                                </li>
+                        <div className='container is-fluid'>
+                            <div className='rows is-justify-content-center'>
 
-                                <li>
-                                    <div className='seat ocupied'></div>
-                                    <small>ocupied</small>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                                <div className=''>
+                                    <div className='rows is-justify-content-center mt-5'>
+                                        <div className='col-xl-8 col-lg-8 col-md-8 col-sm-10 col-12'>
+                                            <ul className='showcase'>
+                                                <li>
+                                                    <div className='seat'></div>
+                                                    <small>NA</small>
+                                                </li>
+                                                <li>
+                                                    <div className='seat selected'></div>
+                                                    <small>selected</small>
+                                                </li>
+                                                <li>
+                                                    <div className='seat ocupied'></div>
+                                                    <small>ocupied</small>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
 
-
-                    <div className=' con'>
-                        <div className='screen'></div>
-                        <div className='row justify-content-center'>
-                            <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12'>
-
-                                <table>
-                                    {divide.map((s, i) => (
-
-                                        <tr>
-                                            {s.map(d => (
-                                                <>
-
-                                                    <td> <div onClick={(e) => { clickfunc(d) }} id={d} className="seat" ></div></td>
-                                                    {findselected(d)}
-                                                </>
-                                            ))}
-
-                                        </tr>
-
-
-
-
-                                    ))}
-                                </table>
-
-
-
+                                    <div className='columns'>
+                                        <div className='column is-10'>
+                                            <div className='con'>
+                                                <div className='screen'></div>
+                                                <div className='columns is-justify-content-center'>
+                                                    <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12'>
+                                                        <table>
+                                                            {divide.map((s, i) => (
+                                                                <tr>
+                                                                    {s.map(d => (
+                                                                        <>
+                                                                            <td> <div onClick={(e) => { clickfunc(d) }} id={d} className="seat" ></div></td>
+                                                                            {findselected(d)}
+                                                                        </>
+                                                                    ))}
+                                                                </tr>
+                                                            ))}
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div >
+                                        <div className='column mt-6  title is-4 has-text-white'>
+                                            <div  className='mt-2  '>
+                                            <h4 className='subtitle is-4 has-text-white'>Ticket Price :<b><p className='subtitle is-6 has-text-danger-dark'> {show?.price}</p></b></h4>
+                                            <h4 className='subtitle is-4 has-text-white'>Booked seats :<b><p className='subtitle is-6 has-text-danger-dark' id='ch'></p></b></h4>
+                                            <h4 className='subtitle is-4 has-text-white'>Total price : <b><p className='subtitle is-6 has-text-danger-dark' id='total'></p></b></h4>
+                                            <button onClick={(e) => { booktickets() }} className='button is-warning'>Add to cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-
-
+                        </div >
 
                     </div>
                 </div>
-                <div className='col-4 mt-5'>
-                    <h4>Ticket Price : {show?.price}</h4>
-                    <h4>Booked seats :<p id='ch'></p></h4>
-                    <h4>Total price : <p id='total'></p></h4>
-                    <button onClick={(e) => { booktickets() }} className='btn btn-warning'>Add to cart</button>
-                </div>
-            </div>
-        </div >
+            </section>
+        </>
     );
 }
 

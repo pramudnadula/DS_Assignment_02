@@ -143,7 +143,7 @@ function Allmovies(props) {
         <>
             <NavBar_Home />
 
-            <section className="hero is-fullheight-with-navbar movie-div">
+            <section className="hero is-fullheight-with-navbar movie-div all-home-flexs">
 
                 <div className="hero-body">
                     <div className="container is-fluid">
@@ -154,7 +154,7 @@ function Allmovies(props) {
 
                                 <div className='container'>
                                     <div className=''>
-                                        <div className='title is-4 has-text-white'>Research Area</div><br />
+                                        <div className='title is-4 has-text-white'>Research Area</div>
                                         <Checkbox areas={categories}
                                             handleFilters={filters => handleFilters(filters, 'area')} />
 
@@ -163,7 +163,7 @@ function Allmovies(props) {
 
                                 <div className='container'>
                                     <div Group className='radio'>
-                                        <h3 className=''>Alocated Groups</h3><br />
+                                        <br /><h3 className='title is-4 has-text-white'>Alocated Groups</h3>
                                         <Radiobox groups={groups}
                                             handleFilters={filters => handleFilters(filters, 'groups')} />
                                     </div>
@@ -171,25 +171,14 @@ function Allmovies(props) {
 
                             </div>
                             <div class="column">
-
-
-
-                                <div className='columns is-multiline'>
+                                <div className='columns is-multiline '>
                                     {filterResults ? (filterResults.map((mov, i) => (
-                                        <div key={i} className='column is-one-fifth'>
+                                        <div key={i} className='column is-2 '>
                                             <Link to={`/view/${mov._id}`}><MovieCard movie={mov} /></Link>
                                         </div>
 
                                     ))) : ''}
-
                                 </div>
-
-
-
-
-
-
-
                                 {loadmorebutton()}
                             </div>
                         </div>
