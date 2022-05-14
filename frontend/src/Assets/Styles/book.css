@@ -1,3 +1,12 @@
+
+.bok {
+    background-color: #242333;
+    color: white;
+    height: 100vh;
+    width: 100vw;
+
+}
+
 .seat {
     background-color: #444451;
     width: 80px;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 //import { Radio } from 'antd';
 
 function Radiobox({ groups, handleFilters }) {
-    
+
     const [Radio, setRadio] = useState('')
 
     const [value, setvalue] = useState(0)

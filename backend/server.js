@@ -12,6 +12,7 @@ const CategoryRouter = require('./Routes/Category')
 const HallRouter = require('./Routes/MovieHall')
 const ShowRouter = require('./Routes/Show')
 const BookingRouter = require('./Routes/Booking')
+const UserRouter = require('./Routes/users')
 const cors = require('cors');
 const bodyparser = require('body-parser');
 app.use(cors());
@@ -30,6 +31,7 @@ app.use('/categories', CategoryRouter)
 app.use('/hall', HallRouter)
 app.use('/show', ShowRouter)
 app.use('/booking', BookingRouter)
+app.use('/user', UserRouter);
 
 
 ////create server with port numebr 

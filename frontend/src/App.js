@@ -12,13 +12,20 @@ import Qr from './Components/Qr/Qr';
 import QrRead from './Components/Qr/QrRead';
 import NavBar_Home from './Components/Home/NavBar_Home';
 import Cart from './Components/Show/Cart';
+import Login from './Components/User/login';
+import Register from './Components/User/register';
+import Profile from './Components/User/profile';
+import Mybookings from './Components/User/Mybookings';
+import AdminLogin from './Components/Admin/AdminLogin';
+import AdminDashboard from './Components/Admin/AdminDashboard';
+import AllMovies from './Components/Admin/AllMovies';
+import AllHalls from './Components/Admin/AllHalls';
 
 
 function App() {
   return (
 
     <BrowserRouter>
-
       <Route path='/' exact component={Home} />
       <Route path='/home' exact component={Home2} />
       <Route path='/addmovie' exact component={Addmovie} />
@@ -30,6 +37,17 @@ function App() {
       <Route path='/qr' exact component={Qr} />
       <Route path='/qrread' exact component={QrRead} />
       <Route path='/cart' exact component={Cart} />
+      <Route path='/login' exact component={Login} />
+      <Route path='/register' exact component={Register} />
+      <Route path='/profile' exact component={Profile} />
+      <Route path='/mybookings' exact component={Mybookings} />
+
+      <Route path='/admin' exact component={AdminLogin} />
+      <Route path='/dashboard' exact component={AdminDashboard} />
+      <Route path='/allmovies' exact component={AllMovies} />
+      <Route path='/allhalls' exact component={AllHalls} />
+
+
     </BrowserRouter>
 
 

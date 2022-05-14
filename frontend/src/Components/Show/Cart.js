@@ -1,9 +1,13 @@
+import axios from 'axios';
+import StripeCheckout from 'react-stripe-checkout';
 import React, { useEffect, useState } from 'react';
 import '../../Assets/Styles/cart.css'
 import NavBar_Home from '../Home/NavBar_Home';
 function Cart(props) {
     var it = JSON.parse(localStorage.getItem("cart"))
+    var user = JSON.parse(localStorage.getItem("user"))
     const [cartitems, setcartitems] = useState(it)
+
     const [total, settotal] = useState(0)
     console.log(cartitems)
     useEffect(() => {
@@ -28,13 +32,50 @@ function Cart(props) {
         });
 
     }, [cartitems])
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cartitems))
+
+
+    }, [cartitems])
 
     const calctotal = () => {
-        for (var i = 0; i < cartitems.length; i++) {
+        for (var i = 0; i < cartitems?.length; i++) {
             settotal(total + cartitems[i].total)
         }
     }
+
+
+
+
+    const removecart = (id) => {
+        setcartitems(cartitems.filter(item => item.num !== id))
+    }
+
+    const bookmovies = () => {
+        const data = {
+            cart: cartitems,
+            uid: user._id,
+
+        }
+        axios.post('http://localhost:8070/booking', data).then((resu) => {
+
+        }).catch((err) => {
+            console.log(err)
+        })
+
+
+        axios.put(`http://localhost:8070/show/updatecart`, data).then((da) => {
+            alert("booked")
+        }).catch((err) => {
+            console.log(err)
+        })
+
+        localStorage.setItem("cart", null)
+
+        window.location.href = '/all';
+    }
     return (
+
         <>
             <NavBar_Home />
             <section className="hero is-fullheight-with-navbar movie-div all-home-flexs">
@@ -54,7 +95,7 @@ function Cart(props) {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {cartitems.map((m, i) => (
+                                                {cartitems?.map((m, i) => (
 
                                                     <tr key={i}>
                                                         <td>
@@ -84,11 +125,13 @@ function Cart(props) {
                                                     </tr>
                                                 ))}
 
+
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
+
                             <div className="column">
                                 <div className="card">
                                     <div className="card-content">
@@ -121,16 +164,35 @@ function Cart(props) {
                                             <dd className="text-right text-dark b ml-3"><strong>${total}</strong></dd>
                                         </dl>
                                         <hr />
+                                   <StripeCheckout
+                                    shippingAddress
+                                    currency='LKR'
+                                    amount={total}
+                                    token={bookmovies}
+                                    stripeKey="pk_test_51KON7QSGc2uzmcTNMsY4QEFqEOPT7kUQaFthMpzSvbbeDYNxBvvPTkiZDnQhMMuuLadaLvFR36OxyQBbVKmXkYnT000ZDxnzBd"
+                                >
+                                    <a href="#" className="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a>
+                                </StripeCheckout> <a href="#" className="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Continue Shopping</a>
                                         <a href="#" className="button is-primary is-outlined is-fullwidth" data-abc="true"> Make Purchase </a>
                                         <a href="#" className="button is-info is-outlined mt-2 is-fullwidth" data-abc="true">Continue Shopping</a>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
+
+            </div>
+
+
+
+        </div>
+
+
             </section>
         </>
+
     );
 }
 
