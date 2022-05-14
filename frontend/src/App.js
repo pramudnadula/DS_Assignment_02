@@ -18,7 +18,7 @@ function App() {
   return (
 
     <BrowserRouter>
-      <NavBar_Home />
+
       <Route path='/' exact component={Home} />
       <Route path='/home' exact component={Home2} />
       <Route path='/addmovie' exact component={Addmovie} />

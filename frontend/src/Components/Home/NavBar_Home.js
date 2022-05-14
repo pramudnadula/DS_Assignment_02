@@ -24,6 +24,7 @@ function NavBar_Home() {
 
           <Link to="/all" className="navbar-item"><i className="navbar-item fa fa-film"></i>  All Movies </Link>
           <Link to="/pipeline" className="navbar-item"><i className="navbar-item fa fa-video-camera"></i> My Movies </Link>
+          <Link to="/cart" className="navbar-item"><i className="navbar-item fa fa-video-camera"></i>My Cart </Link>
          
 
 
