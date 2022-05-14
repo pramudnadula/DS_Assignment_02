@@ -100,8 +100,8 @@ function Cart(props) {
                                                     <tr key={i}>
                                                         <td>
                                                             <figure className="is-flex is-align-items-center">
-                                                                <img src={"http://localhost:8070/" + m.mov.image} style={{ height: '120px' }}/>
-                                                                <figcaption style={{paddingLeft: '0.25rem'}} className="pl-2">
+                                                                <img src={"http://localhost:8070/" + m.mov.image} style={{ height: '120px' }} />
+                                                                <figcaption style={{ paddingLeft: '0.25rem' }} className="pl-2">
                                                                     <h3><b>{m.mov.name}</b></h3>
                                                                     <p className="has-text-grey">{m.show.date}<br /> 11.00pm</p>
                                                                 </figcaption>
@@ -164,16 +164,15 @@ function Cart(props) {
                                             <dd className="text-right text-dark b ml-3"><strong>${total}</strong></dd>
                                         </dl>
                                         <hr />
-                                   <StripeCheckout
-                                    shippingAddress
-                                    currency='LKR'
-                                    amount={total}
-                                    token={bookmovies}
-                                    stripeKey="pk_test_51KON7QSGc2uzmcTNMsY4QEFqEOPT7kUQaFthMpzSvbbeDYNxBvvPTkiZDnQhMMuuLadaLvFR36OxyQBbVKmXkYnT000ZDxnzBd"
-                                >
-                                    <a href="#" className="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a>
-                                </StripeCheckout> <a href="#" className="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Continue Shopping</a>
-                                        <a href="#" className="button is-primary is-outlined is-fullwidth" data-abc="true"> Make Purchase </a>
+                                        <StripeCheckout
+                                            shippingAddress
+                                            currency='LKR'
+                                            amount={total}
+                                            token={bookmovies}
+                                            stripeKey="pk_test_51KON7QSGc2uzmcTNMsY4QEFqEOPT7kUQaFthMpzSvbbeDYNxBvvPTkiZDnQhMMuuLadaLvFR36OxyQBbVKmXkYnT000ZDxnzBd"
+                                        >
+                                            <a href="#" className="button is-primary is-outlined is-fullwidth" data-abc="true"> Make Purchase </a>
+                                        </StripeCheckout>
                                         <a href="#" className="button is-info is-outlined mt-2 is-fullwidth" data-abc="true">Continue Shopping</a>
                                     </div>
                                 </div>
@@ -182,14 +181,6 @@ function Cart(props) {
                         </div>
                     </div>
                 </div>
-
-            </div>
-
-
-
-        </div>
-
-
             </section>
         </>
 

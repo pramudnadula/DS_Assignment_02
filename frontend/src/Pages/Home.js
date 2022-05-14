@@ -5,7 +5,7 @@ import NavBar_Home from '../Components/Home/NavBar_Home';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import '../Assets/Styles/Slider.css'
-import netflix from '../Assets/Images/netflix.svg'
+
 function Home() {
   useEffect(() => {
     // Get all "navbar-burger" elements
