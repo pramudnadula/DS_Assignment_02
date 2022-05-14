@@ -1,15 +1,7 @@
-/* .bok {
-    background-color: #242333;
-    color: white;
-    height: 100vh;
-    width: 100vw;
-
-}
-
 .seat {
     background-color: #444451;
-    width: 40px;
-    height: 37px;
+    width: 80px;
+    height: 45px;
     margin: 3px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -81,4 +73,4 @@
         height: 27px;
 
     }
-} */
+}

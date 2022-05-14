@@ -12,9 +12,8 @@ function Radiobox({ groups, handleFilters }) {
     }
     return groups.map((p, i) => (
         <div key={i}>
-            <label>{p.name}</label>
-            <inuput type="radio" className='mr-2 ml-4' value={`${p._id}`} onChange={(e) => { handlechange(e) }} name="rad" />
-               
+            <input type="radio"  value={`${p._id}`} onChange={(e) => { handlechange(e) }} name="rad" />           
+            <label className=' ml-5 title is-6  has-text-white'>{p.name}</label><br /> <br /> 
         </div >
     ))
     //
