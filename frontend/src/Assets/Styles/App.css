@@ -19,7 +19,7 @@
     right: 0;
     z-index: 1;
     display: block;
-    background: url(https://www.teahub.io/photos/full/220-2205714_get-the-latest-movies-data-src-kodi-tv.jpg);
+    /* background: url(https://www.teahub.io/photos/full/220-2205714_get-the-latest-movies-data-src-kodi-tv.jpg); */
     background: url(https://assets.nflxext.com/ffe/siteui/vlv3/ebff1e0f-5704-423f-b4c6-94914dabe25b/58638b18-d76b-495e-a0fc-9b191045af60/LK-en-20220509-popsignuptwoweeks-perspective_alpha_website_large.jpg);
     width: 100vw;
     height: 100vh;
@@ -36,7 +36,7 @@
     z-index: 1;
     margin-left: 20px;
     margin-right: 20px;
-    top: 30%;
+    top: 25%;
     bottom: 50%;
   }
 
@@ -51,4 +51,8 @@
 
 .all-home-flexs{
     min-height: calc(100vh - 4.25rem) !important;
+}
+
+.admin-div{
+    background: url(https://assets.nflxext.com/ffe/siteui/vlv3/ebff1e0f-5704-423f-b4c6-94914dabe25b/58638b18-d76b-495e-a0fc-9b191045af60/LK-en-20220509-popsignuptwoweeks-perspective_alpha_website_large.jpg);
 }

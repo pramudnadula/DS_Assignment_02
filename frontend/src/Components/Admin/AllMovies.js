@@ -38,7 +38,7 @@ function AllMovies(props) {
         <div className='container-fluid'>
             <div className='row justify-content-center'>
                 <div className='col-10 m_table'>
-                    <table class="table table-hover table-dark m_table">
+                    <table className="table table-hover table-dark m_table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -58,8 +58,10 @@ function AllMovies(props) {
                                     <td>{mov.name}</td>
                                     <td>{mov.description}</td>
                                     <td>{mov.rate}</td>
+
                                     <td><Link to={'/updatemovie/' + mov._id}><a className='btn btn-warning'><i class="fa fa-pencil" aria-hidden="true"></i></a></Link></td>
                                     <td><a className='btn btn-danger' onClick={(e) => { deleteconfirm(mov._id) }}><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+
                                 </tr>
                             ))}
 

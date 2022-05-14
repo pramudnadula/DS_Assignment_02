@@ -17,17 +17,20 @@ function AdminDashboard(props) {
     return (
         <div className='container-fluid'>
             <div className='row addash'>
+
                 <div class="col-xl-3">
                     <Link to='/allshow'> <div class="card bg-c-blue order-card">
                         <div class="card-block">
                             <h6 class="m-b-20">Shows Ongoing</h6>
                             <h2 class="text-right mt-3"><i class="fa fa-cart-plus f-left"></i><span></span></h2>
                             <p class="m-b-0"><span class="f-right">{count?.scount}</span></p>
+
                         </div>
 
                     </div>
                     </Link>
                 </div>
+
 
                 <div class="col-xl-3">
                     <Link to='/allmovies'>
@@ -37,9 +40,11 @@ function AdminDashboard(props) {
                                 <h2 class="text-right mt-3"><i class="fa fa-cart-plus f-left"></i><span></span></h2>
                                 <p class="m-b-0"><span class="f-right">{count?.mcount}</span></p>
                             </div>
+
                         </div>
                     </Link>
                 </div>
+
 
                 <div class="col-xl-3">
                     <Link to="/allhalls">
@@ -49,9 +54,11 @@ function AdminDashboard(props) {
                                 <h2 class="text-right mt-3"><i class="fa fa-cart-plus f-left"></i><span></span></h2>
                                 <p class="m-b-0"><span class="f-right">{count?.hcount}</span></p>
                             </div>
+
                         </div>
                     </Link>
                 </div>
+
 
                 {admin.type === "sa" ? <>
                     <div className='col-xl-3'>
@@ -64,6 +71,7 @@ function AdminDashboard(props) {
                                 </div>
                             </div>
                         </Link>
+
                     </div>
 
                 </> : <></>}

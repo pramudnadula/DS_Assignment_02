@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 import '../../Assets/Styles/user.css'
 
 
 const AdminLogin = () => {
+
 
 
 
@@ -37,6 +38,7 @@ const AdminLogin = () => {
 
                 console.log(res.data.token)
                 setUserId(res.data.user._id)
+                console.log(userId)
                 setTest(!test)
 
                 window.location.href = '/dashboard'
