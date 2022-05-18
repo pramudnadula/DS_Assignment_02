@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import NavBar_Admin from '../Home/NavBar_Admin';
 function Allusers(props) {
     const [nusers, setnusers] = useState([])
     const [ausers, setausers] = useState([])
@@ -37,56 +38,75 @@ function Allusers(props) {
     const deletefunction = (id) => {
         axios.delete(`http://localhost:8070/user/delete/${id}`).then((dat) => {
 
-        }).
-            catch((err) => {
-                console.log(err)
-            })
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     }
     return (
-        <div>
-            <table>
-                <h2>Customers</h2>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>UserName</th>
-                    <th></th>
+        <>
+            {localStorage.getItem('atoken') ? (
+                <>
 
-                </tr>
+                    <NavBar_Admin />
+                    <section className="hero is-fullheight-with-navbar admin-div-home ">
+                        <div className="hero-body">
+                            <div className='container is-fluid'>
+                                <div className='title is-2 has-text-white has-text-centered'>All Users</div><br />
 
-                {nusers?.map((us, i) => (
-                    <tr>
-                        <td>{us.name}</td>
-                        <td>{us.email}</td>
-                        <td>{us.userName}</td>
-                        <th><button onClick={(e) => { deleteconfirm(us._id) }}>remove</button></th>
+                                <div className=''>
+                                    <div className=''>
+                                        <h2 className='title is-4 has-text-centered'>Customers</h2>
+                                        <table className="table is-bordered is-fullwidth">
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>UserName</th>
+                                                <th style={{ width: '05%' }}>Action</th>
 
-                    </tr>
-                ))}
-            </table>
+                                            </tr>
+
+                                            {nusers?.map((us, i) => (
+                                                <tr>
+                                                    <td>{us.name}</td>
+                                                    <td>{us.email}</td>
+                                                    <td>{us.userName}</td>
+                                                    <th><a className='button is-danger' onClick={(e) => { deleteconfirm(us._id) }}><i class="fa fa-trash-o" aria-hidden="true"></i></a></th>
+
+                                                </tr>
+                                            ))}
+                                        </table>
 
 
-            <table>
-                <h2>Movie Admins</h2>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>UserName</th>
-                    <th></th>
+                                        <h2 className='title is-4 has-text-centered'>Movie Admins</h2>
+                                        <table className="table is-bordered is-fullwidth">
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>UserName</th>
+                                                <th style={{ width: '05%' }}>Action</th>
+                                            </tr>
 
-                </tr>
+                                            {ausers?.map((us, i) => (
+                                                <tr>
+                                                    <td>{us.name}</td>
+                                                    <td>{us.email}</td>
+                                                    <td>{us.userName}</td>
+                                                    <th><a className='button is-danger' onClick={(e) => { deleteconfirmadmin(us._id) }}><i class="fa fa-trash-o" aria-hidden="true"></i></a></th>
+                                                </tr>
+                                            ))}
+                                        </table>
+                                    </div>
+                                </div>
 
-                {ausers?.map((us, i) => (
-                    <tr>
-                        <td>{us.name}</td>
-                        <td>{us.email}</td>
-                        <td>{us.userName}</td>
-                        <th><button onClick={(e) => { deleteconfirmadmin(us._id) }}>remove</button></th>
-                    </tr>
-                ))}
-            </table>
-
-        </div>
+                            </div>
+                        </div>
+                    </section>
+                </>
+            ) : (
+                window.location = "/"
+            )}
+        </>
     );
 }
 

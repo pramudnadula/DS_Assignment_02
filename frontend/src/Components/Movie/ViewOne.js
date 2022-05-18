@@ -112,10 +112,10 @@ function ViewOne(props) {
                                 <td>{s.date}</td>
                                 {getTime(s.time)}
                                 <td>{range}</td>
-                                {(localStorage.getItem('token')) ? ( 
-                                <td><Link to={`/booking/${s._id}`}><button className='btn btn-success' disabled={!localStorage.getItem('token')}>Book</button></Link></td>
+                                {(localStorage.getItem('token')) || (localStorage.getItem('atoken')) ? ( 
+                                <td><Link to={`/booking/${s._id}`}><button className='btn btn-success' >Book</button></Link></td>
                                  ):(
-                                <td><Link to={`/login`}><button className='btn btn-success' disabled={localStorage.getItem('token')}>Please Login to Book</button></Link></td>
+                                <td><Link to={`/login`}><button className='btn btn-success' disabled={localStorage.getItem('token') || localStorage.getItem('atoken')}>Please Login to Book</button></Link></td>
 
                                  )} 
                             </tr>

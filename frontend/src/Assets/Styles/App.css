@@ -41,18 +41,36 @@
   }
 
 .movie-div{
+    background-size: cover;
 
     background: url(https://hdwallsource.com/img/2016/6/inception-movie-computer-wallpaper-49336-51002-hd-wallpapers.jpg);
 }
 
+.admin-div-home{
+    background: url(https://img4.goodfon.com/wallpaper/nbig/c/93/hi-tech-technology-projector-katushki-kinoplenka-movie-retro.jpg);
+  background-size: cover;
+}
 .footer-icon{
     height:35px
 }
 
 .all-home-flexs{
-    min-height: calc(100vh - 4.25rem) !important;
+    min-height: calc(100vh - 3.25rem) !important;
 }
 
 .admin-div{
     background: url(https://assets.nflxext.com/ffe/siteui/vlv3/ebff1e0f-5704-423f-b4c6-94914dabe25b/58638b18-d76b-495e-a0fc-9b191045af60/LK-en-20220509-popsignuptwoweeks-perspective_alpha_website_large.jpg);
+}
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
 }
