@@ -154,7 +154,7 @@ function Allmovies(props) {
 
                                 <div className='container'>
                                     <div className=''>
-                                        <div className='title is-4 has-text-white'>Research Area</div>
+                                        <div className='title is-4 has-text-white'>Category</div>
                                         <Checkbox areas={categories}
                                             handleFilters={filters => handleFilters(filters, 'area')} />
 
@@ -163,7 +163,7 @@ function Allmovies(props) {
 
                                 <div className='container'>
                                     <div Group className='radio'>
-                                        <br /><h3 className='title is-4 has-text-white'>Alocated Groups</h3>
+                                        <br /><h3 className='title is-4 has-text-white'>Ratings</h3>
                                         <Radiobox groups={groups}
                                             handleFilters={filters => handleFilters(filters, 'groups')} />
                                     </div>
