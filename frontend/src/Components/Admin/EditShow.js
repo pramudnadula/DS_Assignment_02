@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import NavBar_Admin from '../Home/NavBar_Admin';
 
 function EditShow(props) {
@@ -89,7 +90,7 @@ function EditShow(props) {
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input type="date" className="input" value={date} onChange={(e) => { setdate(e.target.value) }} placeholder="name" aria-label="Username" />
+                                                            <input type="date" className="input" value={date} onChange={(e) => { setdate(e.target.value) }} placeholder="Date" required/>
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
@@ -121,7 +122,7 @@ function EditShow(props) {
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className=" is-fullwidth">
-                                                            <input min='0' type='number' className="input"  value={price} onChange={(e) => { setprice(e.target.value) }} />
+                                                            <input min='0' type='number' className="input"  value={price} onChange={(e) => { setprice(e.target.value) }} required/>
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
@@ -133,6 +134,7 @@ function EditShow(props) {
                                                 </div>      
                                                 <div className=" has-background-danger-light pt-1 pb-2">
                                                     <div className=" mt-5 mr-3 ml-3 pb-3 ">
+                                                        <Link to='/allshow'><button className="button is-link is-fullwidth mb-2" type='submit' value="Create" >Back to Shows</button></Link>                                                      
                                                         <button className="button is-danger is-fullwidth " type='submit' value="save" >Save</button>
                                                     </div>
                                                 </div>

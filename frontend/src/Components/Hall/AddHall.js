@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import NavBar_Admin from '../Home/NavBar_Admin';
 //import { message } from 'antd'
 
@@ -49,7 +50,7 @@ function AddHall(props) {
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input type="text" className="input" onChange={(e) => { setname(e.target.value) }} placeholder="name" aria-label="Username" />
+                                                            <input type="text" className="input" onChange={(e) => { setname(e.target.value) }} placeholder="Name" required />
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
@@ -62,7 +63,7 @@ function AddHall(props) {
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input type="text" className="input" onChange={(e) => { setrows(e.target.value) }} placeholder="name" aria-label="Username" />
+                                                            <input type="text" className="input" onChange={(e) => { setrows(e.target.value) }} placeholder="Seat rows" required />
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
@@ -75,7 +76,7 @@ function AddHall(props) {
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input type="text" className="input" onChange={(e) => { setcols(e.target.value) }} placeholder="name" aria-label="Username" />
+                                                            <input type="text" className="input" onChange={(e) => { setcols(e.target.value) }} placeholder="Seats for a row" required />
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
@@ -88,7 +89,7 @@ function AddHall(props) {
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input type="text" className="input" onChange={(e) => { setrate(e.target.value) }} placeholder="name" aria-label="Username" />
+                                                            <input type="text" className="input" onChange={(e) => { setrate(e.target.value) }} placeholder="Rate" required />
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
@@ -100,6 +101,7 @@ function AddHall(props) {
                                                 </div>
                                                 <div className=" has-background-danger-light pt-1 pb-2">
                                                     <div className=" mt-5 mr-3 ml-3 pb-3 ">
+                                                        <Link to='/allhalls'><button className="button is-link is-fullwidth mb-2" type='submit' value="Create" >Back to Shows</button></Link>
                                                         <button className="button is-danger is-fullwidth " type="submit" value="create" >Create</button>
                                                     </div>
                                                 </div>

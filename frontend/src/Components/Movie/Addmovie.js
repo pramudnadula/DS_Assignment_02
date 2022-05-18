@@ -6,6 +6,7 @@ import { getcategories } from '../../Actions/CategoryActions';
 import Checkbox from './Checkbox';
 import { getHalls } from '../../Actions/Hall';
 import NavBar_Admin from '../Home/NavBar_Admin';
+import { Link } from 'react-router-dom';
 //const { Meta } = Card;
 function Addmovie(props) {
 
@@ -97,7 +98,7 @@ function Addmovie(props) {
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input type="text" className="input" onChange={(e) => { setName(e.target.value) }} placeholder="name" aria-label="Username" />
+                                                            <input type="text" className="input" onChange={(e) => { setName(e.target.value) }} placeholder="name"  required/>
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
@@ -116,27 +117,27 @@ function Addmovie(props) {
                                                             <div type="submit" className=" is-primary is-static mr-3 pr-1">Movie Description</div>
                                                         </div>
                                                         <div className="is-fullwidth">
-                                                            <textarea class="textarea" onChange={(e) => { setdescription(e.target.value) }} placeholder="Textarea"></textarea>
+                                                            <textarea class="textarea" onChange={(e) => { setdescription(e.target.value) }} placeholder="Textarea" required></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input type="date" className="input" onChange={(e) => { setfrom(e.target.value) }} placeholder="name" aria-label="Username" />
+                                                            <input type="date" className="input" onChange={(e) => { setfrom(e.target.value) }} placeholder="name"  required/>
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
                                                         <span className="icon is-left">
                                                             <i className="fa fa-calendar"></i>
                                                         </span>
-                                                        <div type="submit" className=" is-primary is-static mr-3 pr-1">Movie Start Date</div>
+                                                        <div type="submit" className=" is-primary is-static mr-3 ">Movie Start Date</div>
                                                     </div>
                                                 </div>
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input type="date" className="input" onChange={(e) => { setto(e.target.value) }} placeholder="name" aria-label="Username" />
+                                                            <input type="date" className="input" onChange={(e) => { setto(e.target.value) }} placeholder="name"  required/>
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
@@ -165,7 +166,7 @@ function Addmovie(props) {
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input className="input" type="file" name="resume" onClick={(e) => { console.log(ida) }} onChange={upload} id="inputGroupFile04" />
+                                                            <input className="input" type="file" name="resume" onClick={(e) => { console.log(ida) }} onChange={upload} id="inputGroupFile04" required/>
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
@@ -190,6 +191,7 @@ function Addmovie(props) {
                                                 </div> */}
                                                 <div className=" has-background-danger-light pt-1 pb-2">
                                                     <div className=" mt-5 mr-3 ml-3 pb-3 ">
+                                                        <Link to='/allmovies'><button className="button is-link is-fullwidth mb-2" type='submit' value="Create" >Back to Movies</button></Link>
                                                         <button className="button is-danger is-fullwidth " type='submit' value="Create" >Create a Movie</button>
                                                     </div>
                                                 </div>

@@ -78,22 +78,25 @@ function QrRead() {
                 <div>
                   {movie ? <>
                     <div className="card" style={{ width: '16rem' }}>
-                      <img src={"http://localhost:8070/" + movie.image} className="card-img-top" alt="..." />
-                      <div className="card-body">
-                        <h2 className="card-title">{movie.name}</h2>
-                        <p className="card-text">{movie.seats}</p>
+                      <div className="card-image">
+                        <figure className="image ">
+                          <img src={"http://localhost:8070/" + movie.image} className="card-img-top" alt="..." />
+                        </figure>
                       </div>
-                      <ul className="list-group list-group-flush">
-                        <li className="list-group-item">{"Date = " + movie.date}</li>
-                        <li className="list-group-item">{"Time = " + movie.time}</li>
-                        <li className="list-group-item">{"#Tickets = " + movie.seats.length}</li>
-                        <li className="list-group-item">{"Ticket Price = " + movie.price}</li>
-                        <li className="list-group-item">{"Total Price = " + (movie.price * movie.seats.length)}</li>
-
-                      </ul>
-                      <div className="card-body">
-                        <a href="#" className="card-link">Card link</a>
-                        <a href="#" className="card-link">Another link</a>
+                      <div className="card-content">
+                        <div className="">
+                          <div className="card-body">
+                            <h2 className="card-title">{movie.name}</h2>
+                            <p className="card-text">{movie.seats}</p>
+                          </div>
+                          <ul className="">
+                            <li className="list-group-item">{"Date = " + movie.date}</li>
+                            <li className="list-group-item">{"Time = " + movie.time}</li>
+                            <li className="list-group-item">{"#Tickets = " + movie.seats.length}</li>
+                            <li className="list-group-item">{"Ticket Price = " + movie.price}</li>
+                            <li className="list-group-item">{"Total Price = " + (movie.price * movie.seats.length)}</li>
+                          </ul>                     
+                        </div>
                       </div>
                     </div>
                   </> : <>

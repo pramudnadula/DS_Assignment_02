@@ -5,6 +5,7 @@ import { getHalls } from '../../Actions/Hall';
 import { getmovies } from '../../Actions/MovieActions';
 import { useSelector, useDispatch } from 'react-redux'
 import NavBar_Admin from '../Home/NavBar_Admin';
+import { Link } from 'react-router-dom';
 function Addshow(props) {
     const [mid, setmid] = useState("")
     const [hid, sethid] = useState("")
@@ -62,7 +63,7 @@ function Addshow(props) {
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="select is-fullwidth">
-                                                            <select onChange={(e) => { setmid(e.target.value) }}>
+                                                            <select onChange={(e) => { setmid(e.target.value) }} >
                                                                 <option>Select Movie</option>
                                                                 {movies.map(m => (
                                                                     <option value={m._id}>{m.name}</option>
@@ -98,7 +99,7 @@ function Addshow(props) {
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input type="date" className="input" onChange={(e) => { setdate(e.target.value) }} placeholder="name" aria-label="Username" />
+                                                            <input type="date" className="input" onChange={(e) => { setdate(e.target.value) }}  required/>
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
@@ -111,7 +112,7 @@ function Addshow(props) {
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className=" is-fullwidth">
-                                                            <input min='0' type='number' className="input" onChange={(e) => { setprice(e.target.value) }} />
+                                                            <input min='0' type='number' className="input" onChange={(e) => { setprice(e.target.value) }} placeholder="Ticket Price" required/>
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
@@ -141,6 +142,7 @@ function Addshow(props) {
                                                 </div>
                                                 <div className=" has-background-danger-light pt-1 pb-2">
                                                     <div className=" mt-5 mr-3 ml-3 pb-3 ">
+                                                        <Link to='/allshow'><button className="button is-link is-fullwidth mb-2" type='submit' value="Create" >Back to Shows</button></Link>
                                                         <button className="button is-danger is-fullwidth " type="submit" value="create" >Create</button>
                                                     </div>
                                                 </div>

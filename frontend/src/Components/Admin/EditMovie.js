@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import NavBar_Admin from '../Home/NavBar_Admin';
+import { Link } from 'react-router-dom';
 function EditMovie(props) {
     const [name, setname] = useState()
     const [description, setdescription] = useState()
@@ -80,7 +81,7 @@ function EditMovie(props) {
                                                             <div type="submit" className=" is-primary is-static mr-3 pr-1">Movie Description</div>
                                                         </div>
                                                         <div className="is-fullwidth">
-                                                            <textarea class="textarea" value={description} onChange={(e) => { setdescription(e.target.value) }} placeholder="Textarea"></textarea>
+                                                            <textarea class="textarea" value={description} onChange={(e) => { setdescription(e.target.value) }} placeholder="Textarea" required></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -88,7 +89,7 @@ function EditMovie(props) {
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input type="number" className="input" value={rate} onChange={(e) => { setrate(e.target.value) }} placeholder="Movie Rate" min="0" max="5" aria-label="Username" />
+                                                            <input type="number" className="input" value={rate} onChange={(e) => { setrate(e.target.value) }} placeholder="Movie Rate" min="0" max="5" required  />
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
@@ -100,6 +101,7 @@ function EditMovie(props) {
                                                 </div>
                                                 <div className=" has-background-danger-light pt-1 pb-2">
                                                     <div className=" mt-5 mr-3 ml-3 pb-3 ">
+                                                        <Link to='/allmovies'><button className="button is-link is-fullwidth mb-2" type='submit' value="Create" >Back to Movies</button></Link>
                                                         <button className="button is-danger is-fullwidth " type='submit' value="save" >Save</button>
                                                     </div>
                                                 </div>
