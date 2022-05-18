@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import QrReader from 'react-qr-reader';
-import NavBar_Admin from '../Home/NavBar_Admin'
+import NavBar_Home from '../Home/NavBar_Home';
 function QrRead() {
   //useStates
   const [scanResultFile, setScanResultFile] = useState();
@@ -42,7 +42,7 @@ function QrRead() {
   }
   return (
     <div>
-      <NavBar_Admin />
+      <NavBar_Home />
       <section className="hero is-fullheight-with-navbar movie-div all-home-flexs">
 
         <div className="hero-body">
