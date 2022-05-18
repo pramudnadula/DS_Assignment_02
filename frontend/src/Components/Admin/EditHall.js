@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import NavBar_Admin from '../Home/NavBar_Admin';
 
 function EditHall(props) {
 
@@ -16,6 +17,8 @@ function EditHall(props) {
 
         }).catch((err) => {
             console.log(err)
+            alert("Hall Updated")
+            window.location.href = "/allhalls"
         })
     }, [])
 
@@ -28,7 +31,7 @@ function EditHall(props) {
         }
 
         axios.put(`http://localhost:8070/hall/update/${props.match.params.id}`, mov).then((da) => {
-            alert("updsted")
+            alert("Hall Upadated")
             window.location.href = "/allhalls"
 
         }).catch((err) => {
@@ -37,23 +40,94 @@ function EditHall(props) {
 
     }
     return (
-        <div>
-            <form onSubmit={updateHall}>
-                <label>Name</label>
-                <input type='text' value={name} onChange={(e) => { setname(e.target.value) }} /><br></br>
+        <>
+            {localStorage.getItem('atoken') ? (
+                <>
+                    <NavBar_Admin />
 
-                <label>Rows</label>
-                <input type='text' value={rows} readOnly onChange={(e) => { setrows(e.target.value) }} /><br></br>
+                    <section className="hero is-fullheight-with-navbar admin-div">
+                        <div className="hero-body" style={{ padding: '3rem 0.5rem' }}>
+                            <div className="container is-widescreen">
+                                <div className='columns is-justify-content-center'>
+                                    <div className='column is-6'>
+                                        <div className="card" style={{ backgroundColor: '#fff6' }}>
+                                            <div className='title is-2 has-text-danger-dark has-text-centered has-background-danger-light pb-3 pt-2'>
+                                                <b>Edit Halls</b>
+                                            </div>
+                                            <form onSubmit={updateHall}>
+                                            <div className="field has-addons m-3 pt-3">
+                                                    <div className="control is-expanded">
+                                                        <div className="is-fullwidth">
+                                                            <input type="text" className="input" value={name} onChange={(e) => { setname(e.target.value) }} placeholder="name" aria-label="Username" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="button control is-static">
+                                                        <span className="icon is-left">
+                                                            <i className="fa fa-film"></i>
+                                                        </span>
+                                                        <div type="submit" className=" is-primary is-static mr-6 pr-3">Name</div>
+                                                    </div>
+                                                </div>
+                                                <div className="field has-addons m-3 pt-3">
+                                                    <div className="control is-expanded">
+                                                        <div className="is-fullwidth">
+                                                            <input type="text" className="input" value={rows} readOnly disabled onChange={(e) => { setrows(e.target.value) }} placeholder="name" aria-label="Username" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="button control is-static">
+                                                        <span className="icon is-left">
+                                                            <i className="fa fa-film"></i>
+                                                        </span>
+                                                        <div type="submit" className=" is-primary is-static mr-5 pr-3">Seat rows</div>
+                                                    </div>
+                                                </div>
 
-                <label>Seats for A Row</label>
-                <input type='number' value={cols} readOnly onChange={(e) => { setcols(e.target.value) }} /><br></br>
+                                                <div className="field has-addons m-3 pt-3">
+                                                    <div className="control is-expanded">
+                                                        <div className="is-fullwidth">
+                                                            <input type="number" className="input" value={cols} readOnly disabled onChange={(e) => { setcols(e.target.value) }} placeholder="name" aria-label="Username" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="button control is-static">
+                                                        <span className="icon is-left">
+                                                            <i className="fa fa-film"></i>
+                                                        </span>
+                                                        <div type="submit" className=" is-primary is-static">Seats for a row</div>
+                                                    </div>
+                                                </div>
+                                                <div className="field has-addons m-3 pt-3">
+                                                    <div className="control is-expanded">
+                                                        <div className="is-fullwidth">
+                                                            <input type="number" className="input" value={rate} onChange={(e) => { setrate(e.target.value) }} placeholder="name" aria-label="Username" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="button control is-static">
+                                                        <span className="icon is-left">
+                                                            <i className="fa fa-film"></i>
+                                                        </span>
+                                                        <div type="submit" className=" is-primary is-static mr-6 pr-5">Rate</div>
+                                                    </div>
+                                                </div>
+                                              
+                                                <div className=" has-background-danger-light pt-1 pb-2">
+                                                    <div className=" mt-5 mr-3 ml-3 pb-3 ">
+                                                        <button className="button is-danger is-fullwidth " type="submit" value="create" >Create</button>
+                                                    </div>
+                                                </div>
+                                        
+                                            </form>
 
-                <label>Rate</label>
-                <input type='number' value={rate} onChange={(e) => { setrate(e.target.value) }} /><br></br>
-                <input type='submit' value="save" />
-            </form>
-
-        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </>
+            ) : (
+                window.location = "/"
+            )}
+        </>
     );
 }
 

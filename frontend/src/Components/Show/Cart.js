@@ -77,111 +77,117 @@ function Cart(props) {
     return (
 
         <>
-            <NavBar_Home />
-            <section className="hero is-fullheight-with-navbar movie-div all-home-flexs">
-                <div className="hero-body" style={{ padding: '3rem 0.5rem' }}>
-                    <div className="container is-widescreen">
-                        <div className="columns is-justify-content-center">
-                            <div className="column is-9">
-                                <div className="card">
-                                    <div className="card p-1">
-                                        <table className="table is-striped is-narrow is-hoverable is-fullwidth ">
-                                            <thead>
-                                                <tr className="is-uppercase">
-                                                    <th scope="col"><div className="">Movie</div></th>
-                                                    <th scope="col" ><div className="">Quantity</div></th>
-                                                    <th scope="col" ><div className="">Price</div></th>
-                                                    <th scope="col"  ><div className="" style={{ float: 'right' }}>Action</div></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {cartitems?.map((m, i) => (
+            {localStorage.getItem('token') ? (
+                <>
+                    <NavBar_Home />
+                    <section className="hero is-fullheight-with-navbar movie-div all-home-flexs">
+                        <div className="hero-body" style={{ padding: '3rem 0.5rem' }}>
+                            <div className="container is-widescreen">
+                                <div className="columns is-justify-content-center">
+                                    <div className="column is-9">
+                                        <div className="card">
+                                            <div className="card p-1">
+                                                <table className="table is-striped is-narrow is-hoverable is-fullwidth ">
+                                                    <thead>
+                                                        <tr className="is-uppercase">
+                                                            <th scope="col"><div className="">Movie</div></th>
+                                                            <th scope="col" ><div className="">Quantity</div></th>
+                                                            <th scope="col" ><div className="">Price</div></th>
+                                                            <th scope="col"  ><div className="" style={{ float: 'right' }}>Action</div></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {cartitems?.map((m, i) => (
 
-                                                    <tr key={i}>
-                                                        <td>
-                                                            <figure className="is-flex is-align-items-center">
-                                                                <img src={"http://localhost:8070/" + m.mov.image} style={{ height: '120px' }} />
-                                                                <figcaption style={{ paddingLeft: '0.25rem' }} className="pl-2">
-                                                                    <h3><b>{m.mov.name}</b></h3>
-                                                                    <p className="has-text-grey">{m.show.date}<br /> 11.00pm</p>
-                                                                </figcaption>
-                                                            </figure>
-                                                        </td>
-                                                        <td><div className="ml-5 pl-3 has-text-danger"><b>{m.tickets}</b> </div></td>
-                                                        <td>
-                                                            <div className="price-wrap">
-                                                                <var style={{ fontWeight: '600', color: '#212529' }} >
-                                                                    <div>${m.total}</div>
-                                                                </var>
-                                                                <small className="has-text-grey">
-                                                                    <div> ${m.show.price}</div>
-                                                                </small>
-                                                            </div>
-                                                        </td>
-                                                        <td className="" style={{ float: 'right' }}>
-                                                            <a className="button is-light " > <i className="fa fa-heart " /></a>
-                                                            <a className="button is-danger" onClick={(e) => { removecart(m.num) }} > <i className="fa fa-trash" /></a>
-                                                        </td>
-                                                    </tr>
-                                                ))}
+                                                            <tr key={i}>
+                                                                <td>
+                                                                    <figure className="is-flex is-align-items-center">
+                                                                        <img src={"http://localhost:8070/" + m.mov.image} style={{ height: '120px' }} />
+                                                                        <figcaption style={{ paddingLeft: '0.25rem' }} className="pl-2">
+                                                                            <h3><b>{m.mov.name}</b></h3>
+                                                                            <p className="has-text-grey">{m.show.date}<br /> 11.00pm</p>
+                                                                        </figcaption>
+                                                                    </figure>
+                                                                </td>
+                                                                <td><div className="ml-5 pl-3 has-text-danger"><b>{m.tickets}</b> </div></td>
+                                                                <td>
+                                                                    <div className="price-wrap">
+                                                                        <var style={{ fontWeight: '600', color: '#212529' }} >
+                                                                            <div>${m.total}</div>
+                                                                        </var>
+                                                                        <small className="has-text-grey">
+                                                                            <div> ${m.show.price}</div>
+                                                                        </small>
+                                                                    </div>
+                                                                </td>
+                                                                <td className="" style={{ float: 'right' }}>
+                                                                    <a className="button is-light " > <i className="fa fa-heart " /></a>
+                                                                    <a className="button is-danger" onClick={(e) => { removecart(m.num) }} > <i className="fa fa-trash" /></a>
+                                                                </td>
+                                                            </tr>
+                                                        ))}
 
 
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="column">
-                                <div className="card">
-                                    <div className="card-content">
-
-                                        <form>
-                                            <div className="form-group"> <label>Have coupon?</label>
-                                                <div className="input-group"> <input type="text" className="input" name placeholder="Coupon code" />
-                                                    <span className="input-group-append">
-                                                        <button className="button is-danger is-outlined is-fullwidth ">Apply</button>
-                                                    </span>
-                                                </div>
+                                                    </tbody>
+                                                </table>
                                             </div>
-                                        </form>
+                                        </div>
+                                    </div>
+
+                                    <div className="column">
+                                        <div className="card">
+                                            <div className="card-content">
+
+                                                <form>
+                                                    <div className="form-group"> <label>Have coupon?</label>
+                                                        <div className="input-group"> <input type="text" className="input" name placeholder="Coupon code" />
+                                                            <span className="input-group-append">
+                                                                <button className="button is-danger is-outlined is-fullwidth ">Apply</button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                        </div>
+
+                                        <div className="card mt-3">
+                                            <div className="card-content">
+                                                <dl className="is-flex">
+                                                    <dt>Total price:</dt>
+                                                    <dd className="text-right ml-3">$69.97</dd>
+                                                </dl>
+                                                <dl className="is-flex">
+                                                    <dt>Discount:</dt>
+                                                    <dd className="text-right text-danger ml-3">- $10.00</dd>
+                                                </dl>
+                                                <dl className="is-flex">
+                                                    <dt>Total:</dt>
+                                                    <dd className="text-right text-dark b ml-3"><strong>${total}</strong></dd>
+                                                </dl>
+                                                <hr />
+                                                <StripeCheckout
+                                                    shippingAddress
+                                                    currency='LKR'
+                                                    amount={total}
+                                                    token={bookmovies}
+                                                    stripeKey="pk_test_51KON7QSGc2uzmcTNMsY4QEFqEOPT7kUQaFthMpzSvbbeDYNxBvvPTkiZDnQhMMuuLadaLvFR36OxyQBbVKmXkYnT000ZDxnzBd"
+                                                >
+                                                    <a href="#" className="button is-primary is-outlined is-fullwidth" data-abc="true"> Make Purchase </a>
+                                                </StripeCheckout>
+                                                <a href="#" className="button is-info is-outlined mt-2 is-fullwidth" data-abc="true">Continue Shopping</a>
+                                            </div>
+                                        </div>
 
                                     </div>
                                 </div>
-
-                                <div className="card mt-3">
-                                    <div className="card-content">
-                                        <dl className="is-flex">
-                                            <dt>Total price:</dt>
-                                            <dd className="text-right ml-3">$69.97</dd>
-                                        </dl>
-                                        <dl className="is-flex">
-                                            <dt>Discount:</dt>
-                                            <dd className="text-right text-danger ml-3">- $10.00</dd>
-                                        </dl>
-                                        <dl className="is-flex">
-                                            <dt>Total:</dt>
-                                            <dd className="text-right text-dark b ml-3"><strong>${total}</strong></dd>
-                                        </dl>
-                                        <hr />
-                                        <StripeCheckout
-                                            shippingAddress
-                                            currency='LKR'
-                                            amount={total}
-                                            token={bookmovies}
-                                            stripeKey="pk_test_51KON7QSGc2uzmcTNMsY4QEFqEOPT7kUQaFthMpzSvbbeDYNxBvvPTkiZDnQhMMuuLadaLvFR36OxyQBbVKmXkYnT000ZDxnzBd"
-                                        >
-                                            <a href="#" className="button is-primary is-outlined is-fullwidth" data-abc="true"> Make Purchase </a>
-                                        </StripeCheckout>
-                                        <a href="#" className="button is-info is-outlined mt-2 is-fullwidth" data-abc="true">Continue Shopping</a>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
+                    </section>
+                </>
+            ) : (
+                window.location = "/"
+            )}
         </>
 
     );

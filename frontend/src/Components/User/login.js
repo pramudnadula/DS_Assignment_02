@@ -64,10 +64,10 @@ const Login = () => {
 
                   <form onSubmit={sendData}>
 
-                    <div className="input-group mb-3">
+                    <div className="mb-3">
                       <input type="email" className="input is-primary" value="123@gmail.com" placeholder="Email Address" onChange={(e) => { setemail(e.target.value) }} aria-label="Username" aria-describedby="basic-addon1" required />
                     </div>
-                    <div className="input-group mb-3">
+                    <div className="mb-3">
                       <input type="password" className="input is-primary" value="Donkavi2@" placeholder="Password" onChange={(e) => { setpassword(e.target.value) }} aria-label="Password" aria-describedby="basic-addon1" required />
                     </div>
                     <div>

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import NavBar_Admin from '../Home/NavBar_Admin';
 
 function EditShow(props) {
 
@@ -30,7 +31,7 @@ function EditShow(props) {
             price
         }
         axios.put(`http://localhost:8070/show/updateone/${props.match.params.id}`, show).then((da) => {
-            alert("updsted")
+            alert("Show Updated")
             window.location.href = "/allshow"
 
         }).catch((err) => {
@@ -40,31 +41,115 @@ function EditShow(props) {
     }
 
     return (
-        <div>
-            <form onSubmit={updateshow}>
-                <label>Movie Name</label>
-                <input type='text' value={mov} readOnly onChange={(e) => { setmov(e.target.value) }} /><br></br>
+        <>
+            {localStorage.getItem('atoken') ? (
+                <>
+                    <NavBar_Admin />
 
-                <label>Hall Name</label>
-                <input type='text' value={hall} readOnly onChange={(e) => { sethall(e.target.value) }} /><br></br>
+                    <section className="hero is-fullheight-with-navbar admin-div">
+                        <div className="hero-body" style={{ padding: '3rem 0.5rem' }}>
+                            <div className="container is-widescreen">
+                                <div className='columns is-justify-content-center'>
+                                    <div className='column is-6'>
+                                        <div className="card" style={{ backgroundColor: '#fff6' }}>
+                                            <div className='title is-2 has-text-danger-dark has-text-centered has-background-danger-light pb-3 pt-2'>
+                                                <b>Edit Shows</b>
+                                            </div>
+                                            <form onSubmit={updateshow}>
+                                                
+                                                <div className="field has-addons m-3 pt-3">
+                                                    <div className="control is-expanded">
+                                                        <div className="select is-fullwidth">
+                                                        <input type='text' className="input"  value={mov} readOnly disabled onChange={(e) => { setmov(e.target.value) }} />
 
-                <label>Show date</label>
-                <input type='date' value={date} onChange={(e) => { setdate(e.target.value) }} /><br></br>
+                                                        </div>
+                                                    </div>
+                                                    <div className="button control is-static">
+                                                        <span className="icon is-left">
+                                                            <i className="fa fa-film"></i>
+                                                        </span>
+                                                        <div type="submit" className=" is-primary is-static mr-5 pr-2">Movie Name</div>
+                                                    </div>
+                                                </div>
+                                               
+                                                <div className="field has-addons m-3 pt-3">
+                                                    <div className="control is-expanded">
+                                                        <div className="select is-fullwidth">
+                                                            <input type='text' className="input" value={hall} readOnly disabled onChange={(e) => { sethall(e.target.value) }} />    
+                                                        </div>
+                                                    </div>
+                                                    <div className="button control is-static">
+                                                        <span className="icon is-left">
+                                                            <i className="fa fa-building"></i>
+                                                        </span>
+                                                        <div type="submit" className=" is-primary is-static mr-6">Hall Name</div>
+                                                    </div>
+                                                </div>
 
-                <select onChange={(e) => { settime(e.target.value) }} value={time}>
-                    <option >select option</option>
-                    <option value="1">10.00am - 1.00 pm</option>
-                    <option value="2">1.00pm - 4.00 pm</option>
-                    <option value="3">4.00pm - 7.00 pm</option>
-                </select><br></br><br></br>
+                                                <div className="field has-addons m-3 pt-3">
+                                                    <div className="control is-expanded">
+                                                        <div className="is-fullwidth">
+                                                            <input type="date" className="input" value={date} onChange={(e) => { setdate(e.target.value) }} placeholder="name" aria-label="Username" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="button control is-static">
+                                                        <span className="icon is-left">
+                                                            <i className="fa fa-calendar"></i>
+                                                        </span>
+                                                        <div type="submit" className=" is-primary is-static mr-6">Show date</div>
+                                                    </div>
+                                                </div>
+                                                <div className="field has-addons m-3 pt-3">
+                                                    <div className="control is-expanded">
+                                                        <div className="select is-fullwidth">
+                                                            <select onChange={(e) => { settime(e.target.value) }} value={time}>
+                                                                <option>Select Time slot</option>
+                                                                <option value="1">10.00am - 1.00 pm</option>
+                                                                <option value="2">1.00pm - 4.00 pm</option>
+                                                                <option value="3">4.00pm - 7.00 pm</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div className="button control is-static">
+                                                        <span className="icon is-left">
+                                                            <i className="fa fa-clock-o"></i>
+                                                        </span>
+                                                        <div type="submit" className=" is-primary is-static mr-3">Select Time slot</div>
+                                                    </div>
+                                                </div>
+                                               
+                                                <div className="field has-addons m-3 pt-3">
+                                                    <div className="control is-expanded">
+                                                        <div className=" is-fullwidth">
+                                                            <input min='0' type='number' className="input"  value={price} onChange={(e) => { setprice(e.target.value) }} />
+                                                        </div>
+                                                    </div>
+                                                    <div className="button control is-static">
+                                                        <span className="icon is-left">
+                                                            <i className="fa fa-ticket"></i>
+                                                        </span>
+                                                        <div type="submit" className="is-primary is-static ">Ticket Show Price</div>
+                                                    </div>
+                                                </div>      
+                                                <div className=" has-background-danger-light pt-1 pb-2">
+                                                    <div className=" mt-5 mr-3 ml-3 pb-3 ">
+                                                        <button className="button is-danger is-fullwidth " type='submit' value="save" >Save</button>
+                                                    </div>
+                                                </div>
+                                            </form>
 
-                <label>show price</label>
-                <input type='text' value={price} onChange={(e) => { setprice(e.target.value) }} /><br></br>
+                                        </div>
+                                    </div>
 
-                <input type='submit' value="save" />
-            </form>
-
-        </div>
+                                </div >
+                            </div>
+                        </div>
+                    </section>
+                </>
+            ) : (
+                window.location = "/"
+            )}
+        </>
     );
 }
 
