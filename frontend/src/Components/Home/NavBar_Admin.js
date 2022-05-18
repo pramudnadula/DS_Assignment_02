@@ -27,14 +27,14 @@ function NavBar_Admin() {
 
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-start">
-          
+
           <Link to="/" className="navbar-item"> <i className="navbar-item fas fa-home"></i> Home </Link>
           <Link to="/all" className="navbar-item"><i className="navbar-item fa fa-film"></i>  All Movies </Link>
           {(localStorage.getItem('token')) && (
-             <>
-             <Link to="/mybookings" className="navbar-item"><i className="navbar-item fa fa-video-camera"></i> My Movies </Link>
-             <Link to="/cart" className="navbar-item"><i className="navbar-item fa fa-cart-arrow-down"></i>My Cart </Link>
-             </>
+            <>
+              <Link to="/mybookings" className="navbar-item"><i className="navbar-item fa fa-video-camera"></i> My Movies </Link>
+              <Link to="/cart" className="navbar-item"><i className="navbar-item fa fa-cart-arrow-down"></i>My Cart </Link>
+            </>
           )}
           {(localStorage.getItem('atoken')) && (
             <>
@@ -58,8 +58,14 @@ function NavBar_Admin() {
                 Menu
               </a>
               <div className="navbar-dropdown">
-                <Link to="/mybookings" className="navbar-item"><i className="fa fa-video-camera mr-2"></i> My Movies </Link>
-                <Link to="/cart" className="navbar-item"><i className="fa fa-cart-arrow-down mr-2"></i>My Cart </Link>
+                {(localStorage.getItem('atoken')) && (<>
+                  <Link to="/" className="navbar-item"> <i className="fa fa-user mr-2"></i>My Account </Link>
+                </>
+                )}
+                {(localStorage.getItem('token')) && (<>
+                  <Link to="/profile" className="navbar-item"> <i className="fa fa-user mr-2"></i>My Account </Link>
+                </>
+                )}
 
                 <hr className="navbar-divider" />
                 <a className="navbar-item" onClick={(e) => {
