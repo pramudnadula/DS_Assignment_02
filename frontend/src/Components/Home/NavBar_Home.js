@@ -52,7 +52,7 @@ function NavBar_Home() {
 
         <div className="navbar-end">
 
-        {(localStorage.getItem('token')) || (localStorage.getItem('atoken')) &&  (
+        {(localStorage.getItem('token') || localStorage.getItem('atoken')) &&  (
           <div className="navbar-item has-dropdown is-hoverable">
             <a className="navbar-link">
               Menu
@@ -78,7 +78,7 @@ function NavBar_Home() {
           <div className="navbar-item">
             <div className="buttons">
 
-            {!(localStorage.getItem('token')) || (localStorage.getItem('atoken')) && (
+            {!(localStorage.getItem('token') || localStorage.getItem('atoken'))  && (
               <>
               <Link to="/login"><button className="button is-success mr-3">Login</button></Link>
               <Link to="/register"><button className="button is-danger">Register</button></Link>
