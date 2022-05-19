@@ -62,77 +62,95 @@ function ViewOne(props) {
     return (
         <>
             <NavBar_Home />
-            <div className='container-fluid mov '>
-                <div className="mc-movie row">
-                    <div className=" co3-movie col-12">
-                        <div className='row'>
-                            <div className='col-12'>
-                                <a href="#"><img src={"http://localhost:8070/" + movie?.image} alt="cover" className="cover-movie" /></a>
-                                <div className="hero-movie">
-                                    <div className="details">
-                                        <div className="title1">{movie?.name} <span>PG-13</span></div>
-                                    </div> {/* end details */}
-                                </div> {/* end hero */}
-                            </div>
-                        </div>
-                        <div className='row'>
-                            <div className='col-12'>
-                                <div className="description">
+            <section className="hero is-fullheight-with-navbar movie-div all-home-flexs">
 
-                                    <div className="column1">
-                                        {area.map(s => (
-                                            <span className="tag">{s.name}</span>
-                                        ))}
+                <div className="hero-body">
+                    <div className="container is-fluid">
 
+                        <div className="">
+                            <div className="" >
+                                <div className="columns one-movie"  >
+                                    <div className="column" style={{ backgroundColor: 'rgb(255 255 255 / 70%)', borderRadius: '20px' }}>
+                                        <div className='columns' >
+                                            <div className='column is-2'>
+                                                <a href="#"><img src={"http://localhost:8070/" + movie?.image} alt="cover" style={{height: '290px', borderRadius: '20px'}} /></a>
+                                                <div>
+                                                        {area.map(s => (
+                                                            <span className="tag ml-1">{s.name}</span>
+                                                        ))}
+                                                </div>
+                                            </div>
+                                            <div className='column'>
+                                                <div className="title is-2 has-text-danger-dark " >{movie?.name}</div>
+                                            </div>
+                                        </div>
+                                        <div className='columns'>
+                                            <div className='column'>
+                                                <div className="description">
+                                                    <div className="column2">
+                                                        <div className='title is-5 has-text-justified'>{movie.description}</div>
 
-                                    </div>
-                                    <div className="column2">
-                                        <p>{movie.description}</p>
-
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                                {shows.length > 0 ? <>
+
+                                    <div className='columns'>
+                                        <div className='column'>
+                                            <div className='container'>
+                                            <table className='table is-hoverable is-fullwidth'>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Hall Name</th>
+                                                    <th>Date</th>
+                                                    <th>Time</th>
+                                                    <th style={{ width: '120px' }}>Action</th>
+                                                </tr>
+                                                {shows.map((s, i) => (
+                                                    <tr key={i}>
+                                                        <td>{(i + 1)}</td>
+                                                        <td>{s.name}</td>
+                                                        <td>{s.date}</td>
+                                                        {getTime(s.time)}
+                                                        <td>{range}</td>
+                                                        {(localStorage.getItem('token')) || (localStorage.getItem('atoken')) ? (
+                                                            <td><Link to={`/booking/${s._id}`}><button className='button is-success is-fullwidth' >Book</button></Link></td>
+                                                        ) : (
+                                                            <td ><Link to={`/login`}><button className='button is-success is-fullwidth' disabled={localStorage.getItem('token') || localStorage.getItem('atoken')}>Please Login to Book</button></Link></td>
+
+                                                        )}
+                                                    </tr>
+                                                ))}
+
+                                            </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </> : <>
+                                    <div className='columns'>
+                                        <div className='column'>
+                                            <div className="container">
+                                                <div className="card">
+                                                    <article className="message is-success">
+                                                        <div className="message-body">
+                                                            <strong>There are No shows Allocated Yet !!!</strong>
+                                                        </div>
+                                                    </article>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </>}
+
+
                             </div>
                         </div>
                     </div>
                 </div>
-                {shows.length > 0 ? <>
-
-                    <div className='row'>
-                        <div className='col-10'>
-                            <table>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Hall Name</th>
-                                    <th>Date</th>
-                                    <th>Time</th>
-                                    <th></th>
-                                </tr>
-                                {shows.map((s, i) => (
-                                    <tr>
-                                        <td>{(i + 1)}</td>
-                                        <td>{s.name}</td>
-                                        <td>{s.date}</td>
-                                        {getTime(s.time)}
-                                        <td>{range}</td>
-                                        {(localStorage.getItem('token')) || (localStorage.getItem('atoken')) ? (
-                                            <td><Link to={`/booking/${s._id}`}><button className='btn btn-success' >Book</button></Link></td>
-                                        ) : (
-                                            <td><Link to={`/login`}><button className='btn btn-success' disabled={localStorage.getItem('token') || localStorage.getItem('atoken')}>Please Login to Book</button></Link></td>
-
-                                        )}
-                                    </tr>
-                                ))}
-
-                            </table>
-                        </div>
-                    </div>
-                </> : <>
-                    <h1>There are No shows Allocated Yet</h1>
-                </>}
-
-
-            </div>
-
+            </section>
         </>
     );
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function NavBar_Admin() {
-
+  const admin = JSON.parse(localStorage.getItem("admin"))
   // let [user, setUser] = useState();
 
   // useEffect(() => {
@@ -42,8 +42,14 @@ function NavBar_Admin() {
               <Link to="/allshow" className="navbar-item"><i className="navbar-item fa fa-ticket"></i> Shows </Link>
               <Link to="/allmovies" className="navbar-item"><i className="navbar-item fa fa-film"></i> Movies </Link>
               <Link to="/allhalls" className="navbar-item"><i className="navbar-item fa fa-video-camera"></i> Movies Halls </Link>
-              <Link to="/users" className="navbar-item"><i className="navbar-item fa fa-user"></i> Users</Link>
-              <Link to="/bookings" className="navbar-item"><i className="navbar-item fa fa-cart-arrow-down"></i>Booking </Link>
+              <Link to="/allcategory" className="navbar-item"><i className="navbar-item fa fa-folder-o"></i>Categories </Link>
+              {(admin.type === "sa")&&(
+                <>
+                <Link to="/users" className="navbar-item"><i className="navbar-item fa fa-user"></i> Users</Link>
+                <Link to="/bookings" className="navbar-item"><i className="navbar-item fa fa-cart-arrow-down"></i>Booking </Link>
+                </>
+
+              )}
             </>
           )}
           <Link to="/qrread" className="navbar-item"> <i className="navbar-item fa fa-qrcode" aria-hidden="true"></i>QR Reader </Link>
