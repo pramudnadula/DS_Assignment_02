@@ -26,6 +26,7 @@ const upload = multer({ storage: storage, fileFilter: filefilter });
 
 router.route("/add").post(upload.single('studentImage'), (req, res) => {
     const name = req.body.name;
+    const rate = req.body.rates;
     const description = req.body.description;
     const startDate = req.body.from;
     const endDate = req.body.to;
@@ -39,6 +40,7 @@ router.route("/add").post(upload.single('studentImage'), (req, res) => {
 
     const newmovie = new Movie({
         name,
+        rate,
         description,
         startDate,
         endDate,

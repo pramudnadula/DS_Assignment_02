@@ -10,7 +10,7 @@ function Mybookings(props) {
     const [check, setcheck] = useState(false)
     var user = JSON.parse(localStorage.getItem("user"))
     useEffect(() => {
-        axios.get(`http://localhost:8070/booking/getbookings/${user._id}`).then((data) => {
+        axios.get(`http://localhost:8280/bookings/getone/${user._id}`).then((data) => {
             setitems(data.data)
 
 
@@ -71,9 +71,9 @@ function Mybookings(props) {
 
                         <div className="hero-body">
                             <div className="container is-fluid">
-                                    <div className=''>
-                                        <h2 className=''>My Bookings</h2>
-                                    </div>
+                                <div className=''>
+                                    <h2 className=''>My Bookings</h2>
+                                </div>
                                 <div className='columns is-justify-content-center'>
                                     <div className='column is-10'>
                                         <div className="">

@@ -14,7 +14,7 @@ function Addmovie(props) {
     const [description, setdescription] = useState("");
     const [to, setto] = useState("");
     const [from, setfrom] = useState("");
-    //const [rates, setrate] = useState("");
+    const [rates, setrate] = useState("");
     const [formdata, setformdata] = useState(null);
     const [ida, setida] = useState([])
 
@@ -54,7 +54,7 @@ function Addmovie(props) {
 
 
         data.append("arr", JSON.stringify(ida))
-
+        data.append("rates", rates);
 
         console.log(ida)
         e.preventDefault();
@@ -82,7 +82,7 @@ function Addmovie(props) {
 
     return (
         <>
-            {localStorage.getItem('atoken')? (
+            {localStorage.getItem('atoken') ? (
                 <>
                     <NavBar_Admin />
                     <section className="hero is-fullheight-with-navbar admin-div">
@@ -98,7 +98,7 @@ function Addmovie(props) {
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input type="text" className="input" onChange={(e) => { setName(e.target.value) }} placeholder="name"  required/>
+                                                            <input type="text" className="input" onChange={(e) => { setName(e.target.value) }} placeholder="name" required />
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
@@ -124,7 +124,7 @@ function Addmovie(props) {
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input type="date" className="input" onChange={(e) => { setfrom(e.target.value) }} placeholder="name"  required/>
+                                                            <input type="date" className="input" onChange={(e) => { setfrom(e.target.value) }} placeholder="name" required />
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
@@ -137,7 +137,7 @@ function Addmovie(props) {
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input type="date" className="input" onChange={(e) => { setto(e.target.value) }} placeholder="name"  required/>
+                                                            <input type="date" className="input" onChange={(e) => { setto(e.target.value) }} placeholder="name" required />
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
@@ -166,7 +166,21 @@ function Addmovie(props) {
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input className="input" type="file" name="resume" onClick={(e) => { console.log(ida) }} onChange={upload} id="inputGroupFile04" required/>
+                                                            <input type="number" className="input" onChange={(e) => { setrate(e.target.value) }} placeholder="Movie Rate" min="0" max="5" aria-label="Username" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="button control is-static">
+                                                        <span className="icon is-left">
+                                                            <i className="fa fa fa-star"></i>
+                                                        </span>
+                                                        <div type="submit" className=" is-primary is-static mr-5 pr-4">Movie Rate</div>
+                                                    </div>
+                                                </div>
+
+                                                <div className="field has-addons m-3 pt-3">
+                                                    <div className="control is-expanded">
+                                                        <div className="is-fullwidth">
+                                                            <input className="input" type="file" name="resume" onClick={(e) => { console.log(ida) }} onChange={upload} id="inputGroupFile04" required />
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
@@ -176,19 +190,7 @@ function Addmovie(props) {
                                                         <div type="submit" className=" is-primary is-static mr-3 pr-1">Choose a file…</div>
                                                     </div>
                                                 </div>
-                                                {/* <div className="field has-addons m-3 pt-3">
-                                                    <div className="control is-expanded">
-                                                        <div className="is-fullwidth">
-                                                        <input type="number" className="input" onChange={(e) => { setrate(e.target.value) }} placeholder="Movie Rate" min="0" max="5" aria-label="Username" />
-                                                        </div>
-                                                    </div>
-                                                    <div className="button control is-static">
-                                                        <span className="icon is-left">
-                                                            <i className="fa fa fa-star"></i>
-                                                        </span>
-                                                        <div type="submit" className=" is-primary is-static mr-5 pr-4">Movie Rate</div>
-                                                    </div>
-                                                </div> */}
+
                                                 <div className=" has-background-danger-light pt-1 pb-2">
                                                     <div className=" mt-5 mr-3 ml-3 pb-3 ">
                                                         <Link to='/allmovies'><button className="button is-link is-fullwidth mb-2" type='submit' value="Create" >Back to Movies</button></Link>
@@ -207,8 +209,8 @@ function Addmovie(props) {
                         </div>
                     </section>
                 </>
-            ):(
-                window.location="/"
+            ) : (
+                window.location = "/"
             )}
         </>
     );

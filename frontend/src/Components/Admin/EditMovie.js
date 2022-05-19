@@ -8,7 +8,7 @@ function EditMovie(props) {
     const [rate, setrate] = useState()
     const [image, setimage] = useState()
     useEffect(() => {
-        axios.get(`http://localhost:8070/movies/getone/${props.match.params.id}`).then((data) => {
+        axios.get(`http://localhost:8280/movies/getmovie/${props.match.params.id}`).then((data) => {
             setname(data.data.name)
             setdescription(data.data.description)
             setrate(data.data.rate)
@@ -53,9 +53,9 @@ function EditMovie(props) {
                                             <form onSubmit={updatemovie}>
                                                 <div className=" is-flex is-justify-content-center">
 
-                                                <div className="card has-text-centered" style={{ width: "215px" }}>
-                                                    <img style={{ width: "200px" }} src={"http://localhost:8070/" + image} alt="movie poster" className="mt-1" /><br></br>
-                                                </div>
+                                                    <div className="card has-text-centered" style={{ width: "215px" }}>
+                                                        <img style={{ width: "200px" }} src={"http://localhost:8070/" + image} alt="movie poster" className="mt-1" /><br></br>
+                                                    </div>
                                                 </div>
 
                                                 <div className="field has-addons m-3 pt-3">
@@ -89,7 +89,7 @@ function EditMovie(props) {
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input type="number" className="input" value={rate} onChange={(e) => { setrate(e.target.value) }} placeholder="Movie Rate" min="0" max="5" required  />
+                                                            <input type="number" className="input" value={rate} onChange={(e) => { setrate(e.target.value) }} placeholder="Movie Rate" min="0" max="5" required />
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">

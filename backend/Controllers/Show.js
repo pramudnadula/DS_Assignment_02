@@ -4,6 +4,7 @@ const Movie = require('../Models/Movie')
 const User = require('../Models/User')
 const Hall = require('../Models/MovieHall')
 const Booking = require('../Models/Booking')
+const Category = require('../Models/Category')
 exports.allshows = (req, res) => {
     Show.find().populate("mid").populate("hid").exec((err, result) => {
         if (err) {
@@ -99,13 +100,15 @@ exports.analytics = async (req, res) => {
     const ucount = await User.count();
     const mcount = await Movie.count();
     const bcount = await Booking.count();
+    const ccount = await Category.count();
 
     const analytic = {
         scount,
         hcount,
         ucount,
         mcount,
-        bcount
+        bcount,
+        ccount
     }
 
     res.status(200).send(analytic)

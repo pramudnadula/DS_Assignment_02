@@ -28,7 +28,7 @@ export const getmovies = () => async dispatch => {
     dispatch({ type: 'LOADING', payload: true })
 
     try {
-        const response = await axios.get('http://localhost:8070/movies/list')
+        const response = await axios.get('http://localhost:8280/movies/list')
         dispatch({ type: "GET_ALL_MOVIES", payload: response.data })
         dispatch({ type: 'LOADING', payload: false })
     } catch (error) {

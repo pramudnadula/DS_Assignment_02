@@ -53,7 +53,7 @@ function Profile({ setTest }) {
                         <div className="field has-addons m-3 pt-3">
                           <div className="control is-expanded">
                             <div className="is-fullwidth">
-                              <input type="text" className="input" value={currentUser.name} placeholder="name"  disabled/>
+                              <input type="text" className="input" value={currentUser.name} placeholder="name" disabled />
                             </div>
                           </div>
                           <div className="button control is-static">
@@ -66,7 +66,7 @@ function Profile({ setTest }) {
                         <div className="field has-addons m-3 pt-3">
                           <div className="control is-expanded">
                             <div className="is-fullwidth">
-                              <input type="email" className="input" value={currentUser.email} placeholder="Email"  disabled/>
+                              <input type="email" className="input" value={currentUser.email} placeholder="Email" disabled />
                             </div>
                           </div>
                           <div className="button control is-static">
@@ -79,7 +79,7 @@ function Profile({ setTest }) {
                         <div className="field has-addons m-3 pt-3">
                           <div className="control is-expanded">
                             <div className="is-fullwidth">
-                              <input type="text" className="input" value={currentUser.userName} placeholder="User Name"  disabled/>
+                              <input type="text" className="input" value={currentUser.userName} placeholder="User Name" disabled />
                             </div>
                           </div>
                           <div className="button control is-static">
@@ -92,7 +92,7 @@ function Profile({ setTest }) {
                         <div className="field has-addons m-3 pt-3">
                           <div className="control is-expanded">
                             <div className="is-fullwidth">
-                              <input type="password" className="input" value={currentUser.password} placeholder="Password"  disabled/>
+                              <input type="password" className="input" value={currentUser.password} placeholder="Password" disabled />
                             </div>
                           </div>
                           <div className="button control is-static">
@@ -105,10 +105,10 @@ function Profile({ setTest }) {
                         <div className=" has-background-info-light pt-1 pb-2">
                           <div className=" mt-5 mr-3 ml-3 pb-3 ">
                             <Link to='/all'><button className="button is-link is-light is-fullwidth mb-2" type='submit' value="Create" >Back to Movies</button></Link>
-                            <Link to={"/update/" + currentUser._id}><button className="button is-info is-fullwidth " type='submit' value="Create" >Edit Profile</button></Link>
+                            <Link to={"/updateuser/" + currentUser._id}><button className="button is-info is-fullwidth " type='submit' value="Create" >Edit Profile</button></Link>
                           </div>
                         </div>
-                        
+
                       </form>
 
                     </div>

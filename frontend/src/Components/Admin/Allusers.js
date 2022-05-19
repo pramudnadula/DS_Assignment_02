@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import NavBar_Admin from '../Home/NavBar_Admin';
+import { Link } from 'react-router-dom';
 function Allusers(props) {
     const [nusers, setnusers] = useState([])
     const [ausers, setausers] = useState([])
@@ -39,9 +40,9 @@ function Allusers(props) {
         axios.delete(`http://localhost:8070/user/delete/${id}`).then((dat) => {
 
         })
-        .catch((err) => {
-            console.log(err)
-        })
+            .catch((err) => {
+                console.log(err)
+            })
     }
     return (
         <>
@@ -57,6 +58,9 @@ function Allusers(props) {
                                 <div className=''>
                                     <div className=''>
                                         <h2 className='title is-4 has-text-centered'>Customers</h2>
+                                        <div className='is-flex is-right is-justify-content-end mb-3'>
+                                            <Link to="/adduser"><a className='button is-danger'>Add User<i class="fa fa-user ml-2" aria-hidden="true"></i></a></Link>
+                                        </div>
                                         <table className="table is-bordered is-fullwidth">
                                             <tr>
                                                 <th>Name</th>
@@ -79,6 +83,11 @@ function Allusers(props) {
 
 
                                         <h2 className='title is-4 has-text-centered'>Movie Admins</h2>
+
+                                        <div className='is-flex is-right is-justify-content-end mb-3'>
+                                            <Link to="/addadmin"><a className='button is-danger'>Add Movie Admin<i class="fa fa-user ml-2" aria-hidden="true"></i></a></Link>
+                                        </div>
+
                                         <table className="table is-bordered is-fullwidth">
                                             <tr>
                                                 <th>Name</th>

@@ -3,15 +3,20 @@ import StripeCheckout from 'react-stripe-checkout';
 import React, { useEffect, useState } from 'react';
 import '../../Assets/Styles/cart.css'
 import NavBar_Home from '../Home/NavBar_Home';
+import { Link } from 'react-router-dom';
 function Cart(props) {
+    const [total, settotal] = useState(0)
+    var t = 0;
+    var sum = 0;
     var it = JSON.parse(localStorage.getItem("cart"))
+
     var user = JSON.parse(localStorage.getItem("user"))
     const [cartitems, setcartitems] = useState(it)
-    console.log(cartitems)
-    const [total, settotal] = useState(0)
-    console.log(cartitems)
+
+
+
     useEffect(() => {
-        calctotal()
+
 
         // Get all "navbar-burger" elements
         const $navbarBurgers = document.querySelectorAll('.navbar-burger')
@@ -33,15 +38,15 @@ function Cart(props) {
 
     }, [cartitems])
     useEffect(() => {
+
         localStorage.setItem("cart", JSON.stringify(cartitems))
+
 
 
     }, [cartitems])
 
-    const calctotal = () => {
-        for (var i = 0; i < cartitems?.length; i++) {
-            settotal(total + cartitems[i].total)
-        }
+    const calctotal = (tot) => {
+        sum = sum + tot;
     }
 
 
@@ -49,6 +54,7 @@ function Cart(props) {
 
     const removecart = (id) => {
         setcartitems(cartitems.filter(item => item.num !== id))
+        calctotal()
     }
 
     const bookmovies = () => {
@@ -99,8 +105,10 @@ function Cart(props) {
                                                     <tbody>
                                                         {cartitems?.map((m, i) => (
 
+
                                                             <tr key={i}>
                                                                 <td>
+
                                                                     <figure className="is-flex is-align-items-center">
                                                                         <img src={"http://localhost:8070/" + m.mov.image} style={{ height: '120px' }} />
                                                                         <figcaption style={{ paddingLeft: '0.25rem' }} className="pl-2">
@@ -120,11 +128,13 @@ function Cart(props) {
                                                                         </small>
                                                                     </div>
                                                                 </td>
+                                                                {calctotal(((m.total)))}
                                                                 <td className="" style={{ float: 'right' }}>
                                                                     <a className="button is-light " > <i className="fa fa-heart " /></a>
                                                                     <a className="button is-danger" onClick={(e) => { removecart(m.num) }} > <i className="fa fa-trash" /></a>
                                                                 </td>
                                                             </tr>
+
                                                         ))}
 
 
@@ -134,9 +144,10 @@ function Cart(props) {
                                         </div>
                                     </div>
 
+
                                     <div className="column">
                                         <div className="card">
-                                            <div className="card-content">
+                                            {/* <div className="card-content">
 
                                                 <form>
                                                     <div className="form-group"> <label>Have coupon?</label>
@@ -148,34 +159,34 @@ function Cart(props) {
                                                     </div>
                                                 </form>
 
-                                            </div>
+                                            </div> */}
                                         </div>
 
                                         <div className="card mt-3">
                                             <div className="card-content">
                                                 <dl className="is-flex">
-                                                    <dt>Total price:</dt>
-                                                    <dd className="text-right ml-3">$69.97</dd>
+                                                    {/* <dt>Total price:</dt>
+                                                    <dd className="text-right ml-3">$69.97</dd> */}
                                                 </dl>
                                                 <dl className="is-flex">
                                                     <dt>Discount:</dt>
-                                                    <dd className="text-right text-danger ml-3">- $10.00</dd>
+                                                    <dd className="text-right text-danger ml-3">- $0.00</dd>
                                                 </dl>
                                                 <dl className="is-flex">
                                                     <dt>Total:</dt>
-                                                    <dd className="text-right text-dark b ml-3"><strong>${total}</strong></dd>
+                                                    <dd className="text-right text-dark b ml-3"><strong>${sum ? sum : 0}</strong></dd>
                                                 </dl>
                                                 <hr />
                                                 <StripeCheckout
                                                     shippingAddress
                                                     currency='LKR'
-                                                    amount={total}
+                                                    amount={sum * 100}
                                                     token={bookmovies}
                                                     stripeKey="pk_test_51KON7QSGc2uzmcTNMsY4QEFqEOPT7kUQaFthMpzSvbbeDYNxBvvPTkiZDnQhMMuuLadaLvFR36OxyQBbVKmXkYnT000ZDxnzBd"
                                                 >
                                                     <a href="#" className="button is-primary is-outlined is-fullwidth" data-abc="true"> Make Purchase </a>
                                                 </StripeCheckout>
-                                                <a href="#" className="button is-info is-outlined mt-2 is-fullwidth" data-abc="true">Continue Shopping</a>
+                                                <a href="#" className="button is-info is-outlined mt-2 is-fullwidth" data-abc="true"><Link to="/all">Continue Shopping</Link></a>
                                             </div>
                                         </div>
 
@@ -187,7 +198,8 @@ function Cart(props) {
                 </>
             ) : (
                 window.location = "/"
-            )}
+            )
+            }
         </>
 
     );
