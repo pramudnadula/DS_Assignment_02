@@ -34,7 +34,7 @@ exports.createShow = (req, res) => {
 exports.specificshows = (req, res) => {
     let mid = req.params.id;
     var resu = []
-    const shows = Show.find({ mid: mid }).then((movs) => {
+    const shows = Show.find({ mid: mid }).populate("hid").then((movs) => {
         for (var i = 0; i < movs.length; i++) {
             const d1 = moment(movs[i].date, "YYYY MM DD")
             var current = moment().startOf('day');
