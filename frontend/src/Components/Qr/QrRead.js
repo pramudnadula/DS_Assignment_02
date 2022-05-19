@@ -48,7 +48,7 @@ function QrRead() {
         <div className="hero-body">
           <div className='container is-max-widescreen'>
 
-            <div className="columns">
+            <div className="columns card">
               <div className="column is-half">
 
                 {type ? <>
@@ -56,18 +56,21 @@ function QrRead() {
                   <QrReader
                     ref={qrRef}
                     delay={300}
-                    style={{ width: '300px' }}
+                    style={{ width: '525px', backgroundColor: '#fff' }}
                     onError={handleErrorFile}
                     onScan={handleScanFile}
                     legacyMode
                   />
-
-                  <button className="button is-danger" onClick={(e) => { onScanFile() }}>scan to Insert</button>
+                  <div className="has-text-centered">
+                    <button className="button is-danger " onClick={(e) => { onScanFile() }}>scan to Insert</button>
+                  </div>
                 </> : <>
-                  <button className="button is-warning" onClick={(e) => { settype(!type) }}><i className="fa fa-picture-o" aria-hidden="true"></i>Use Image</button>
+                  <div className="has-text-centered">
+                    <button className="button is-warning " onClick={(e) => { settype(!type) }}><i className="fa fa-picture-o" aria-hidden="true"></i>Use Image</button>
+                  </div>
                   <QrReader
                     delay={300}
-                    style={{ width: '300px' }}
+                    style={{ width: '580px', backgroundColor: '#fff' }}
                     onError={handleErrorWebCam}
                     onScan={handleScanWebCam}
                   />
@@ -95,7 +98,7 @@ function QrRead() {
                             <li className="list-group-item">{"#Tickets = " + movie.seats.length}</li>
                             <li className="list-group-item">{"Ticket Price = " + movie.price}</li>
                             <li className="list-group-item">{"Total Price = " + (movie.price * movie.seats.length)}</li>
-                          </ul>                     
+                          </ul>
                         </div>
                       </div>
                     </div>
