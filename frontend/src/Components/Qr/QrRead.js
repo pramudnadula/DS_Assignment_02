@@ -40,6 +40,17 @@ function QrRead() {
       setmovie(JSON.parse(result))
     }
   }
+  let range
+  const getTime = (ind) => {
+
+      if (ind === 1) {
+          range = "10.00am - 1.00pm"
+      } else if (ind === 2) {
+          range = "1.00pm - 4.00pm"
+      } else if (ind === 3) {
+          range = "4.00pm - 7.00pm"
+      }
+  }
   return (
     <div>
       <NavBar_Home />
@@ -89,12 +100,13 @@ function QrRead() {
                       <div className="card-content">
                         <div className="">
                           <div className="card-body">
-                            <h2 className="card-title">{movie.name}</h2>
-                            <p className="card-text">{movie.seats}</p>
+                            <h2 className="card-title"><b>{movie.name}</b></h2>
+                            <p className="card-text">{movie.seats+', '}</p>
                           </div>
                           <ul className="">
                             <li className="list-group-item">{"Date = " + movie.date}</li>
-                            <li className="list-group-item">{"Time = " + movie.time}</li>
+                            { getTime(movie.time)}
+                            <li className="list-group-item">{"Time = " + range}</li>
                             <li className="list-group-item">{"#Tickets = " + movie.seats.length}</li>
                             <li className="list-group-item">{"Ticket Price = " + movie.price}</li>
                             <li className="list-group-item">{"Total Price = " + (movie.price * movie.seats.length)}</li>
