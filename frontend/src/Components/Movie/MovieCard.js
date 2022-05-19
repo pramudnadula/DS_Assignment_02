@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../Assets/Styles/card.css'
+
 function MovieCard({ movie }) {
     return (
         <div className="movie-card">

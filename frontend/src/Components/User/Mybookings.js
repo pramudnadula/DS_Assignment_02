@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import moment from 'moment'
 import QRCode from 'qrcode';
-import '../../Assets/Styles/mybook.css'
 import NavBar_Home from '../Home/NavBar_Home';
 function Mybookings(props) {
     const [imageUrl, setImageUrl] = useState('');

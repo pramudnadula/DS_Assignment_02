@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { getShows } from '../../Actions/ShowActions';
-import '../../Assets/Styles/one.css'
 import NavBar_Home from '../../Components/Home/NavBar_Home';
 
 function ViewOne(props) {
