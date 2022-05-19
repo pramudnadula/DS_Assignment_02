@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // import PasswordChecklist from "react-password-checklist"
 
@@ -33,7 +33,8 @@ function Register() {
       name,
       email,
       userName,
-      password
+      password,
+      type: ""
     };
 
     axios
@@ -93,8 +94,8 @@ function Register() {
 
                     <div>
                       <input type="submit" value="Register" className="button is-link is-fullwidth" />
-                    <Link to="/login"><button className="button is-danger is-fullwidth mt-2">Login</button></Link>
-                    <Link to='/'> <button type="submit" className="button is-success is-fullwidth mt-2">Back to Home Page</button></Link> 
+                      <Link to="/login"><button className="button is-danger is-fullwidth mt-2">Login</button></Link>
+                      <Link to='/'> <button type="submit" className="button is-success is-fullwidth mt-2">Back to Home Page</button></Link>
                     </div>
 
 

@@ -5,7 +5,7 @@ export const getcategories = () => async dispatch => {
     dispatch({ type: 'LOADING', payload: true })
 
     try {
-        const response = await axios.get('http://localhost:8070/categories/list')
+        const response = await axios.get('http://localhost:8280/categories/list')
         dispatch({ type: "GET_ALL_CATE", payload: response.data })
         dispatch({ type: 'LOADING', payload: false })
     } catch (error) {

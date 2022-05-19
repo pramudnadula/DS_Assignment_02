@@ -46,7 +46,7 @@ function Allmovies(props) {
 
     }, [])
 
-    const [limit, setlimit] = useState(6)
+    const [limit, setlimit] = useState(12)
     const [skip, setskip] = useState(0)
     const [type, settype] = useState(false);
     const [size, setsize] = useState(0)

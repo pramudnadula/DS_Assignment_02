@@ -12,7 +12,7 @@ function EditShow(props) {
     const [mov, setmov] = useState('')
 
     useEffect(() => {
-        axios.get(`http://localhost:8070/show/getone/${props.match.params.id}`).then((data) => {
+        axios.get(`http://localhost:8280/shows/getone/${props.match.params.id}`).then((data) => {
             setmov(data.data.mid.name)
             sethall(data.data.hid.name)
             settime(data.data.time)
@@ -57,11 +57,11 @@ function EditShow(props) {
                                                 <b>Edit Shows</b>
                                             </div>
                                             <form onSubmit={updateshow}>
-                                                
+
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="select is-fullwidth">
-                                                        <input type='text' className="input"  value={mov} readOnly disabled onChange={(e) => { setmov(e.target.value) }} />
+                                                            <input type='text' className="input" value={mov} readOnly disabled onChange={(e) => { setmov(e.target.value) }} />
 
                                                         </div>
                                                     </div>
@@ -72,11 +72,11 @@ function EditShow(props) {
                                                         <div type="submit" className=" is-primary is-static mr-5 pr-2">Movie Name</div>
                                                     </div>
                                                 </div>
-                                               
+
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="select is-fullwidth">
-                                                            <input type='text' className="input" value={hall} readOnly disabled onChange={(e) => { sethall(e.target.value) }} />    
+                                                            <input type='text' className="input" value={hall} readOnly disabled onChange={(e) => { sethall(e.target.value) }} />
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
@@ -90,7 +90,7 @@ function EditShow(props) {
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input type="date" className="input" value={date} onChange={(e) => { setdate(e.target.value) }} placeholder="Date" required/>
+                                                            <input type="date" className="input" value={date} onChange={(e) => { setdate(e.target.value) }} placeholder="Date" required />
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
@@ -118,11 +118,11 @@ function EditShow(props) {
                                                         <div type="submit" className=" is-primary is-static mr-3">Select Time slot</div>
                                                     </div>
                                                 </div>
-                                               
+
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className=" is-fullwidth">
-                                                            <input min='0' type='number' className="input"  value={price} onChange={(e) => { setprice(e.target.value) }} required/>
+                                                            <input min='0' type='number' className="input" value={price} onChange={(e) => { setprice(e.target.value) }} required />
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
@@ -131,10 +131,10 @@ function EditShow(props) {
                                                         </span>
                                                         <div type="submit" className="is-primary is-static ">Ticket Show Price</div>
                                                     </div>
-                                                </div>      
+                                                </div>
                                                 <div className=" has-background-danger-light pt-1 pb-2">
                                                     <div className=" mt-5 mr-3 ml-3 pb-3 ">
-                                                        <Link to='/allshow'><button className="button is-link is-fullwidth mb-2" type='submit' value="Create" >Back to Shows</button></Link>                                                      
+                                                        <Link to='/allshow'><button className="button is-link is-fullwidth mb-2" type='submit' value="Create" >Back to Shows</button></Link>
                                                         <button className="button is-danger is-fullwidth " type='submit' value="save" >Save</button>
                                                     </div>
                                                 </div>

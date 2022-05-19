@@ -59,7 +59,7 @@ function NavBar_Admin() {
               </a>
               <div className="navbar-dropdown">
                 {(localStorage.getItem('atoken')) && (<>
-                  <Link to="/" className="navbar-item"> <i className="fa fa-user mr-2"></i>My Account </Link>
+                  <Link to="/aprofile" className="navbar-item"> <i className="fa fa-user mr-2"></i>My Account </Link>
                 </>
                 )}
                 {(localStorage.getItem('token')) && (<>

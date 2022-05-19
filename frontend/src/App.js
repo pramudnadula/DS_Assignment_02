@@ -25,6 +25,14 @@ import EditMovie from './Components/Admin/EditMovie';
 import EditHall from './Components/Admin/EditHall';
 import Allusers from './Components/Admin/Allusers';
 import AllBookings from './Components/Admin/AllBookings';
+import Update from './Components/User/update';
+import AddCategory from './Components/Admin/AllCategory';
+import AllCategory from './Components/Admin/AllCategory';
+import Addcategories from './Components/Admin/Addcategories';
+import Addadmin from './Components/Admin/Addadmin';
+import Adduser from './Components/Admin/Adduser';
+import Adminprofile from './Components/Admin/Adminprofile';
+import AdminEdit from './Components/Admin/AdminEdit';
 
 
 function App() {
@@ -46,6 +54,7 @@ function App() {
       <Route path='/register' exact component={Register} />
       <Route path='/profile' exact component={Profile} />
       <Route path='/mybookings' exact component={Mybookings} />
+      <Route path='/updateuser/:id' exact component={Update} />
 
       <Route path='/admin' exact component={AdminLogin} />
       <Route path='/dashboard' exact component={AdminDashboard} />
@@ -57,6 +66,12 @@ function App() {
       <Route path='/updatehall/:id' exact component={EditHall} />
       <Route path='/users' exact component={Allusers} />
       <Route path='/bookings' exact component={AllBookings} />
+      <Route path='/addcategory' exact component={Addcategories} />
+      <Route path='/allcategory' exact component={AllCategory} />
+      <Route path='/addadmin' exact component={Addadmin} />
+      <Route path='/adduser' exact component={Adduser} />
+      <Route path='/aprofile' exact component={Adminprofile} />
+      <Route path='/adedit/:id' exact component={AdminEdit} />
 
 
 

@@ -1,119 +1,110 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import NavBar_Admin from '../Home/NavBar_Admin';
-import { Link } from 'react-router-dom';
 
-function EditHall(props) {
 
-    const [name, setname] = useState()
-    const [rows, setrows] = useState()
-    const [rate, setrate] = useState()
-    const [cols, setcols] = useState()
+function Adminprofile(props) {
+
+
+
+    const [currentUser, setcurrentUser] = useState("")
+
+    const token = localStorage.getItem("atoken");
+    const users = JSON.parse(localStorage.getItem("admin"));
+    console.log(users)
+    const userId = users._id;
+
     useEffect(() => {
-        axios.get(`http://localhost:8280/halls/getone/${props.match.params.id}`).then((data) => {
-            setname(data.data.name)
-            setrows(data.data.rows)
-            setrate(data.data.rate)
-            setcols(data.data.cols)
-
-        }).catch((err) => {
-            console.log(err)
-            alert("Hall Updated")
-            window.location.href = "/allhalls"
-        })
+        const token = localStorage.getItem("atoken");
+        try {
+            axios({
+                method: "get",
+                baseURL: `http://localhost:8070/user/getuser/${userId}`,
+                headers: {
+                    Authorization: "Bearer " + token
+                },
+            }).then(res => {
+                setcurrentUser(res.data.user)
+                console.log(res.data)
+            })
+        } catch (err) {
+            throw err;
+        }
     }, [])
 
-    const updateHall = (e) => {
-        e.preventDefault()
-
-        const mov = {
-            rate,
-            name
-        }
-
-        axios.put(`http://localhost:8070/hall/update/${props.match.params.id}`, mov).then((da) => {
-            alert("Hall Upadated")
-            window.location.href = "/allhalls"
-
-        }).catch((err) => {
-            console.log(err)
-        })
-
-    }
     return (
         <>
             {localStorage.getItem('atoken') ? (
                 <>
                     <NavBar_Admin />
 
-                    <section className="hero is-fullheight-with-navbar admin-div">
+                    <section className="hero is-fullheight-with-navbar movie-div ">
                         <div className="hero-body" style={{ padding: '3rem 0.5rem' }}>
                             <div className="container is-widescreen">
                                 <div className='columns is-justify-content-center'>
                                     <div className='column is-6'>
-                                        <div className="card" style={{ backgroundColor: '#fff6' }}>
-                                            <div className='title is-2 has-text-danger-dark has-text-centered has-background-danger-light pb-3 pt-2'>
-                                                <b>Edit Halls</b>
+                                        <div className="card" style={{ backgroundColor: '#fff6', borderRadius: '10px' }}>
+                                            <div className='title is-3 has-text-info-dark has-text-centered has-background-info-light pb-3 pt-2' style={{ borderRadius: '10px' }}>
+                                                <b>My Profile</b>
                                             </div>
-                                            <form onSubmit={updateHall}>
+                                            <form >
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input type="text" className="input" value={name} onChange={(e) => { setname(e.target.value) }} placeholder="name" required />
+                                                            <input type="text" className="input" value={currentUser.name} placeholder="name" disabled />
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
                                                         <span className="icon is-left">
-                                                            <i className="fa fa-film"></i>
+                                                            <i className="fa fa-user-circle-o"></i>
                                                         </span>
-                                                        <div type="submit" className=" is-primary is-static mr-6 pr-3">Name</div>
+                                                        <div type="submit" className=" is-primary is-static mr-6 pr-1">Name</div>
                                                     </div>
                                                 </div>
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input type="text" className="input" value={rows} readOnly disabled onChange={(e) => { setrows(e.target.value) }} placeholder="name" aria-label="Username" />
+                                                            <input type="email" className="input" value={currentUser.email} placeholder="Email" disabled />
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
                                                         <span className="icon is-left">
-                                                            <i className="fa fa-film"></i>
+                                                            <i className="fa fa-envelope"></i>
                                                         </span>
-                                                        <div type="submit" className=" is-primary is-static mr-5 pr-3">Seat rows</div>
-                                                    </div>
-                                                </div>
-
-                                                <div className="field has-addons m-3 pt-3">
-                                                    <div className="control is-expanded">
-                                                        <div className="is-fullwidth">
-                                                            <input type="number" className="input" value={cols} readOnly disabled onChange={(e) => { setcols(e.target.value) }} placeholder="name" aria-label="Username" />
-                                                        </div>
-                                                    </div>
-                                                    <div className="button control is-static">
-                                                        <span className="icon is-left">
-                                                            <i className="fa fa-film"></i>
-                                                        </span>
-                                                        <div type="submit" className=" is-primary is-static">Seats for a row</div>
+                                                        <div type="submit" className=" is-primary is-static mr-6 pr-2">Email</div>
                                                     </div>
                                                 </div>
                                                 <div className="field has-addons m-3 pt-3">
                                                     <div className="control is-expanded">
                                                         <div className="is-fullwidth">
-                                                            <input type="number" className="input" value={rate} onChange={(e) => { setrate(e.target.value) }} placeholder="Rate" required />
+                                                            <input type="text" className="input" value={currentUser.userName} placeholder="User Name" disabled />
                                                         </div>
                                                     </div>
                                                     <div className="button control is-static">
                                                         <span className="icon is-left">
-                                                            <i className="fa fa-film"></i>
+                                                            <i className="fa fa-user"></i>
                                                         </span>
-                                                        <div type="submit" className=" is-primary is-static mr-6 pr-5">Rate</div>
+                                                        <div type="submit" className=" is-primary is-static mr-3 pr-1">User Name</div>
                                                     </div>
                                                 </div>
-
-                                                <div className=" has-background-danger-light pt-1 pb-2">
+                                                <div className="field has-addons m-3 pt-3">
+                                                    <div className="control is-expanded">
+                                                        <div className="is-fullwidth">
+                                                            <input type="password" className="input" value={currentUser.password} placeholder="Password" disabled />
+                                                        </div>
+                                                    </div>
+                                                    <div className="button control is-static">
+                                                        <span className="icon is-left">
+                                                            <i className="fa fa-lock"></i>
+                                                        </span>
+                                                        <div type="submit" className=" is-primary is-static mr-5 pr-1">Password</div>
+                                                    </div>
+                                                </div>
+                                                <div className=" has-background-info-light pt-1 pb-2">
                                                     <div className=" mt-5 mr-3 ml-3 pb-3 ">
-                                                        <Link to='/allhalls'><button className="button is-link is-fullwidth mb-2" type='submit' value="Create" >Back to Shows</button></Link>
-                                                        <button className="button is-danger is-fullwidth " type="submit" value="create" >Create</button>
+                                                        <Link to='/dashboard'><button className="button is-link is-light is-fullwidth mb-2" type='submit' value="Create" >Back to Dashboard</button></Link>
+                                                        <Link to={"/adedit/" + currentUser._id}><button className="button is-info is-fullwidth " type='submit' value="Create" >Edit Profile</button></Link>
                                                     </div>
                                                 </div>
 
@@ -133,4 +124,4 @@ function EditHall(props) {
     );
 }
 
-export default EditHall;
+export default Adminprofile;

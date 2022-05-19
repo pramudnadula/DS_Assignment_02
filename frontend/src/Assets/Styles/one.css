@@ -8,12 +8,12 @@
     font: 14px/22px "Lato", Arial, sans-serif;
     color: #A9A8A3;
     padding: 40px 0;
-    background-color: rgb(70, 61, 61);
+
 }
 
 .co3-movie {
     margin: 0 auto;
-    background: #F0F0ED;
+
     border-radius: 5px;
     position: relative;
 }
@@ -28,6 +28,10 @@
     border-top-right-radius: 5px;
 }
 
+.mov {
+    background-color: rgb(20, 1, 37);
+}
+
 .hero-movie:before {
     content: '';
     width: 100%;
@@ -37,7 +41,7 @@
     top: 0;
     left: 0;
     background: red;
-    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_bg.jpg");
+    background: url("../Images/vv.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     z-index: -1;
@@ -59,9 +63,10 @@
 }
 
 .details .title1 {
+
     color: white;
     font-size: 44px;
-    margin-bottom: 13px;
+    margin-bottom: 1px;
     position: relative;
 }
 
@@ -100,6 +105,8 @@
     font-size: 16px;
     line-height: 26px;
     color: #B1B0AC;
+    font-family: 'Macondo', cursive;
+    font-size: 24px;
 }
 
 .column1 {
@@ -111,7 +118,8 @@
 }
 
 .tag {
-    background: white;
+    background-color: rgb(34, 105, 219) !important;
+    color: white !important;
     border-radius: 10px;
     padding: 3px 8px;
     font-size: 14px;

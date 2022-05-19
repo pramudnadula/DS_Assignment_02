@@ -11,6 +11,7 @@ exports.signup = async (req, res, next) => {
   const userName = req.body.userName;
   const name = req.body.name;
   const password = req.body.password;
+  const type = req.body.type;
   try {
     const checkuser = await User.findOne({ email: email });
     if (checkuser) {
@@ -24,7 +25,7 @@ exports.signup = async (req, res, next) => {
       password: hashedPw,
       userName: userName,
       name: name,
-      type: ""
+      type: type
     });
     const result = await user.save();
     res.status(201).json({ message: "User created!", userId: result._id });
@@ -59,7 +60,7 @@ exports.update = async (req, res, next) => {
       console.log(err);
       res
         .status(500)
-        .send({ status: 'Error with updating data', error: message });
+        .send({ status: 'Error with updating data', error: "error" });
     });
 };
 
