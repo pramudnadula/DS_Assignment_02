@@ -73,11 +73,11 @@ function ViewOne(props) {
                                     <div className="column" style={{ backgroundColor: 'rgb(255 255 255 / 70%)', borderRadius: '20px' }}>
                                         <div className='columns' >
                                             <div className='column is-2'>
-                                                <a href="#"><img src={"http://localhost:8070/" + movie?.image} alt="cover" style={{height: '290px', borderRadius: '20px'}} /></a>
+                                                <a href="#"><img src={"http://localhost:8070/" + movie?.image} alt="cover" style={{ height: '290px', borderRadius: '20px' }} /></a>
                                                 <div>
-                                                        {area.map(s => (
-                                                            <span className="tag ml-1">{s.name}</span>
-                                                        ))}
+                                                    {area.map(s => (
+                                                        <span className="tag ml-1">{s.name}</span>
+                                                    ))}
                                                 </div>
                                             </div>
                                             <div className='column'>
@@ -101,31 +101,31 @@ function ViewOne(props) {
                                     <div className='columns'>
                                         <div className='column'>
                                             <div className='container'>
-                                            <table className='table is-hoverable is-fullwidth'>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Hall Name</th>
-                                                    <th>Date</th>
-                                                    <th>Time</th>
-                                                    <th style={{ width: '120px' }}>Action</th>
-                                                </tr>
-                                                {shows.map((s, i) => (
-                                                    <tr key={i}>
-                                                        <td>{(i + 1)}</td>
-                                                        <td>{s.name}</td>
-                                                        <td>{s.date}</td>
-                                                        {getTime(s.time)}
-                                                        <td>{range}</td>
-                                                        {(localStorage.getItem('token')) || (localStorage.getItem('atoken')) ? (
-                                                            <td><Link to={`/booking/${s._id}`}><button className='button is-success is-fullwidth' >Book</button></Link></td>
-                                                        ) : (
-                                                            <td ><Link to={`/login`}><button className='button is-success is-fullwidth' disabled={localStorage.getItem('token') || localStorage.getItem('atoken')}>Please Login to Book</button></Link></td>
-
-                                                        )}
+                                                <table className='table is-hoverable is-fullwidth'>
+                                                    <tr>
+                                                        <th>No</th>
+                                                        <th>Hall Name</th>
+                                                        <th>Date</th>
+                                                        <th>Time</th>
+                                                        <th style={{ width: '120px' }}>Action</th>
                                                     </tr>
-                                                ))}
+                                                    {shows.map((s, i) => (
+                                                        <tr key={i}>
+                                                            <td>{(i + 1)}</td>
+                                                            <td>{s.hid.name}</td>
+                                                            <td>{s.date}</td>
+                                                            {getTime(s.time)}
+                                                            <td>{range}</td>
+                                                            {(localStorage.getItem('token')) || (localStorage.getItem('atoken')) ? (
+                                                                <td><Link to={`/booking/${s._id}`}><button className='button is-success is-fullwidth' >Book</button></Link></td>
+                                                            ) : (
+                                                                <td ><Link to={`/login`}><button className='button is-success is-fullwidth' disabled={localStorage.getItem('token') || localStorage.getItem('atoken')}>Please Login to Book</button></Link></td>
 
-                                            </table>
+                                                            )}
+                                                        </tr>
+                                                    ))}
+
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
