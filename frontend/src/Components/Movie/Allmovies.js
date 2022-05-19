@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { getfiltermovies } from '../../Actions/MovieActions';
-import "../../Assets/Styles/home.css"
 import { groups } from './GroupNum'
 import { getcategories } from '../../Actions/CategoryActions';
 import Checkbox from './Checkbox';

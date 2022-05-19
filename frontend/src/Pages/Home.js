@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import {Link} from 'react-router-dom'
-import "../Assets/Styles/home.css"
 import NavBar_Home from '../Components/Home/NavBar_Home';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'

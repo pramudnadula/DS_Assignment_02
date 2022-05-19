@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { getmovies } from '../../Actions/MovieActions';
-import '../../Assets/Styles/user.css'
 import axios from 'axios';
 import NavBar_Admin from '../Home/NavBar_Admin';
 

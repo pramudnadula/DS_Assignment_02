@@ -1,7 +1,6 @@
 import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
 import React, { useEffect, useState } from 'react';
-import '../../Assets/Styles/cart.css'
 import NavBar_Home from '../Home/NavBar_Home';
 import { Link } from 'react-router-dom';
 function Cart(props) {
