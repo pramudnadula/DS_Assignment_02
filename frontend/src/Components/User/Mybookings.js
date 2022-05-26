@@ -52,6 +52,17 @@ function Mybookings(props) {
             return true
         }
     }
+    let range
+    const getTime = (ind) => {
+
+        if (ind === 1) {
+            range = "10.00am - 1.00pm"
+        } else if (ind === 2) {
+            range = "1.00pm - 4.00pm"
+        } else if (ind === 3) {
+            range = "4.00pm - 7.00pm"
+        }
+    }
 
     const delbooking = (id) => {
         axios.delete(`http://localhost:8070/booking/${id}`).then((dat) => {
@@ -106,11 +117,12 @@ function Mybookings(props) {
                                                                 </figure>
                                                             </td>
                                                             <td>{moment(m.createdAt).format("YYYY-MM-DD")}</td>
-                                                            <td>{m.sid.date}</td>
-                                                            <td>{m.sid.time}</td>
-                                                            <td>{m.tickets} </td>
+                                                            <td>{m.sid?.date}</td>
+                                                            {getTime(m.sid?.time)}
+                                                            <td>{range}</td>
+                                                            <td>{m?.tickets} </td>
                                                             <td>
-                                                                <div className="price-wrap"> <var className="price">${m.sid.price * m.tickets}</var> <small className="text-muted"> ${m.sid.price} </small> </div>
+                                                                <div className="price-wrap"> <var className="price">${m.sid?.price * m?.tickets}</var> <small className="text-muted"> ${m.sid?.price} </small> </div>
                                                             </td>
 
                                                             <td className="text-right d-md-block">   {checkavilable(m.createdAt) ? <a href className="btn btn-light" data-abc="true" onClick={(e) => { delbooking(m._id) }} ><i className="fa fa-trash" /></a> : <></>} </td>
