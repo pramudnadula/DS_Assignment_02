@@ -176,15 +176,19 @@ function Cart(props) {
                                                     <dd className="text-right text-dark b ml-3"><strong>${sum ? sum : 0}</strong></dd>
                                                 </dl>
                                                 <hr />
-                                                <StripeCheckout
-                                                    shippingAddress
-                                                    currency='LKR'
-                                                    amount={sum * 100}
-                                                    token={bookmovies}
-                                                    stripeKey="pk_test_51KON7QSGc2uzmcTNMsY4QEFqEOPT7kUQaFthMpzSvbbeDYNxBvvPTkiZDnQhMMuuLadaLvFR36OxyQBbVKmXkYnT000ZDxnzBd"
-                                                >
-                                                    <a href="#" className="button is-primary is-outlined is-fullwidth" data-abc="true"> Make Purchase </a>
-                                                </StripeCheckout>
+                                                {sum > 0 ? <>
+
+                                                    <StripeCheckout
+                                                        shippingAddress
+                                                        currency='LKR'
+                                                        amount={sum * 100}
+                                                        token={bookmovies}
+                                                        stripeKey="pk_test_51KON7QSGc2uzmcTNMsY4QEFqEOPT7kUQaFthMpzSvbbeDYNxBvvPTkiZDnQhMMuuLadaLvFR36OxyQBbVKmXkYnT000ZDxnzBd"
+                                                    >
+                                                        <a href="#" className="button is-primary is-outlined is-fullwidth" data-abc="true"> Make Purchase </a>
+                                                    </StripeCheckout>
+                                                </> : <></>}
+
                                                 <a href="#" className="button is-info is-outlined mt-2 is-fullwidth" data-abc="true"><Link to="/all">Continue Shopping</Link></a>
                                             </div>
                                         </div>
