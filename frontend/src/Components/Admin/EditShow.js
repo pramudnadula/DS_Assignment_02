@@ -12,7 +12,7 @@ function EditShow(props) {
     const [mov, setmov] = useState('')
 
     useEffect(() => {
-        axios.get(`http://localhost:8280/shows/getone/${props.match.params.id}`).then((data) => {
+        axios.get(`http://localhost:8070/show/getone/${props.match.params.id}`).then((data) => {
             setmov(data.data.mid.name)
             sethall(data.data.hid.name)
             settime(data.data.time)

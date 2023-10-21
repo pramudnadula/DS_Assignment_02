@@ -8,7 +8,7 @@ function AllCategory(props) {
     const [cate, setcate] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:8280/categories/list').then((data) => {
+        axios.get('http://localhost:8070/categories/list').then((data) => {
             setcate(data.data)
         }).catch((err) => {
 

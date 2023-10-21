@@ -5,7 +5,7 @@ const router = require('express').Router();
 
 
 router.post('/', createBooking)
-router.get('/getbookings/:id', getbookings)
+router.get('/getbooking/:id', getbookings)
 router.delete('/:id', delbookings)
 router.get('/all', getallbookings)
 

@@ -20,7 +20,7 @@ function AllShows(props) {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:8280/shows/list').then((data) => {
+        axios.get('http://localhost:8070/show/all').then((data) => {
             setshows(data.data)
         }).catch((err) => {
 

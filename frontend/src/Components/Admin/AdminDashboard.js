@@ -14,7 +14,7 @@ function AdminDashboard(props) {
     const [count, setcount] = useState()
 
     useEffect(() => {
-        axios.get('http://localhost:8280/shows/analysis').then((data) => {
+        axios.get('http://localhost:8070/show/analytic').then((data) => {
             setcount(data.data)
         }).catch((err) => {
             console.log(err)

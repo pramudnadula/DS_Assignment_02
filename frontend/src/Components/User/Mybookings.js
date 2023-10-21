@@ -9,7 +9,7 @@ function Mybookings(props) {
     const [check, setcheck] = useState(false)
     var user = JSON.parse(localStorage.getItem("user"))
     useEffect(() => {
-        axios.get(`http://localhost:8280/bookings/getone/${user._id}`).then((data) => {
+        axios.get(`http://localhost:8070/booking/getbooking/${user._id}`).then((data) => {
             setitems(data.data)
 
 

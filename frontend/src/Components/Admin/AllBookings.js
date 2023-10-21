@@ -6,7 +6,7 @@ function AllBookings(props) {
     const [bookings, setbookings] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:8280/bookings/all').then((data) => {
+        axios.get('http://localhost:8070/booking/all').then((data) => {
             setbookings(data.data)
 
         }).catch((err) => {

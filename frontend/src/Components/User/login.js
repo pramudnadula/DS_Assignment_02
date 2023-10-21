@@ -7,8 +7,8 @@ const Login = () => {
 
 
   const [userName, setuserName] = useState("")
-  const [email, setemail] = useState("kavinduchamith01@gmail.com")
-  const [password, setpassword] = useState("Donkavi2@")
+  const [email, setemail] = useState("")
+  const [password, setpassword] = useState("")
   const [test, setTest] = useState(false)
   const [userId, setUserId] = useState('')
 
@@ -64,10 +64,10 @@ const Login = () => {
                   <form onSubmit={sendData}>
 
                     <div className="mb-3">
-                      <input type="email" className="input is-primary" value="123@gmail.com" placeholder="Email Address" onChange={(e) => { setemail(e.target.value) }} aria-label="Username" aria-describedby="basic-addon1" required />
+                      <input type="email" className="input is-primary" placeholder="Email Address" onChange={(e) => { setemail(e.target.value) }} aria-label="Username" aria-describedby="basic-addon1" required />
                     </div>
                     <div className="mb-3">
-                      <input type="password" className="input is-primary" value="Donkavi2@" placeholder="Password" onChange={(e) => { setpassword(e.target.value) }} aria-label="Password" aria-describedby="basic-addon1" required />
+                      <input type="password" className="input is-primary" placeholder="Password" onChange={(e) => { setpassword(e.target.value) }} aria-label="Password" aria-describedby="basic-addon1" required />
                     </div>
                     <div>
                       <button type="submit" className="button is-link is-fullwidth">Login</button>

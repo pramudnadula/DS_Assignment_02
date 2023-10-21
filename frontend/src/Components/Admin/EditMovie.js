@@ -8,7 +8,7 @@ function EditMovie(props) {
     const [rate, setrate] = useState()
     const [image, setimage] = useState()
     useEffect(() => {
-        axios.get(`http://localhost:8280/movies/getmovie/${props.match.params.id}`).then((data) => {
+        axios.get(`http://localhost:8070/movies/getone/${props.match.params.id}`).then((data) => {
             setname(data.data.name)
             setdescription(data.data.description)
             setrate(data.data.rate)

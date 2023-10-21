@@ -10,7 +10,7 @@ function EditHall(props) {
     const [rate, setrate] = useState()
     const [cols, setcols] = useState()
     useEffect(() => {
-        axios.get(`http://localhost:8280/halls/getone/${props.match.params.id}`).then((data) => {
+        axios.get(`http://localhost:8070/hall/getone/${props.match.params.id}`).then((data) => {
             setname(data.data.name)
             setrows(data.data.rows)
             setrate(data.data.rate)

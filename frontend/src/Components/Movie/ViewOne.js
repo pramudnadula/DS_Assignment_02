@@ -15,7 +15,7 @@ function ViewOne(props) {
 
     useEffect(() => {
 
-        axios.get(`http://localhost:8280/movies/getmovie/${props.match.params.id}`).then((data) => {
+        axios.get(`http://localhost:8070/movies/getone/${props.match.params.id}`).then((data) => {
 
             setmovie(data.data)
             setarea(data.data.area)
